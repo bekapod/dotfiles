@@ -10,16 +10,24 @@ fi
 printf "\n📦 Installing brew packages\n"
 
 BREW_PACKAGES=(
+  ansible
+  ansible-lint
   awscli
   exercism
   flyctl
   gh
+  git
   gleam
   glow
   go
   hugo
   jq
+  k9s
+  kubectx
+  kubernetes-cli
   neovim
+  mongosh
+  pnpm
   pyenv
   ripgrep
   rust
