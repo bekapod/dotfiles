@@ -9,7 +9,7 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install brew
 ./bin/dotfiles install volta
 
-stow starship
+stow starship zsh
 
 echo "👷‍♀️ Manual installation/updates"
 echo "oh-my-zsh      omz update"
