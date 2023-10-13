@@ -28,6 +28,7 @@ BREW_PACKAGES=(
   k9s
   kubectx
   kubernetes-cli
+  lazygit
   neovim
   mongosh
   pyenv
