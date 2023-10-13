@@ -28,7 +28,6 @@ BREW_PACKAGES=(
   kubernetes-cli
   neovim
   mongosh
-  pnpm
   pyenv
   ripgrep
   rust
