@@ -7,7 +7,6 @@ export DOTFILES_LOCATION;
 
 ./bin/dotfiles install oh-my-zsh
 ./bin/dotfiles install brew
-./bin/dotfiles install volta
 
 stow starship zsh
 
