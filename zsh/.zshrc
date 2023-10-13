@@ -122,5 +122,11 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+if [ -d "$HOME/zsh" ]; then
+  for file in ~/zsh/*; do
+    source $file
+  done
+fi
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
