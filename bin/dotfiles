@@ -21,4 +21,12 @@ case "${command}" in
     echo "${command} does not exist"
   exit 1
     ;;
+case "$(command)" in
+  "post-install")
+    package="${1}"
+    echo "📦 Post install for package: ${package}"
+    (cd "${DOTFILES_LOCATION}/${package}" && ./post-install.sh)
+    echo "\n"
+  exit 1
+    ;;
 esac
