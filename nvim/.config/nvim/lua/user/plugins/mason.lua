@@ -35,7 +35,7 @@ return {
         "eslint_d",
         "gleam",
         "mypy",
-        "prettierd",
+        "prettier",
         "ruff",
         "stylelint",
         "stylua",
