@@ -1,18 +1,46 @@
-local on_attach = function(client, bufnr) require("lsp-inlayhints").on_attach(client, bufnr, false) end
+local on_attach = function(client, bufnr)
+  require("lsp-inlayhints").on_attach(client, bufnr, false)
+
+  local function is_vue()
+    local package_json_path = vim.fn.getcwd() .. "/package.json"
+    local package_json = io.open(package_json_path, "r")
+
+    if package_json then
+      local package_json_content = package_json:read "*all"
+      package_json:close()
+
+      if package_json_content:find '"vue"' then return true end
+    end
+  end
+
+  if is_vue() then
+    if client.name == "volar" then
+      vim.lsp.for_each_buffer_client(bufnr, function(buffer_client, client_id)
+        if buffer_client.name == "tsserver" then vim.lsp.stop_client(client_id, true) end
+      end)
+    elseif client.name == "tsserver" then
+      for _, active_client in ipairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
+        if active_client.name == "volar" then vim.lsp.stop_client(client.id, true) end
+      end
+    end
+  else
+    if client.name == "volar" then vim.lsp.stop_client(client.id, true) end
+  end
+end
 
 return {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
+    remote = "origin",     -- remote to use
+    channel = "stable",    -- "stable" or "nightly"
+    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "nightly",    -- branch name (NIGHTLY ONLY)
+    commit = nil,          -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false,  -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false, -- automatically quit the current session after a successful update
-    remotes = { -- easily add new remotes to track
+    auto_quit = false,     -- automatically quit the current session after a successful update
+    remotes = {            -- easily add new remotes to track
       --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
       --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
@@ -33,7 +61,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -54,9 +82,9 @@ return {
     servers = {
       -- "pyright"
     },
+    on_attach = on_attach,
     config = {
       tsserver = {
-        on_attach = on_attach,
         settings = {
           typescript = {
             inlayHints = {
@@ -84,15 +112,17 @@ return {
           },
         },
       },
-    },
-    lua_ls = {
-      on_attach = on_attach,
-      settings = {
-        Lua = {
-          hint = {
-            enable = true,
+      lua_ls = {
+        settings = {
+          Lua = {
+            hint = {
+              enable = true,
+            },
           },
         },
+      },
+      volar = {
+        filetypes = { "vue", "typescript", "javascript" },
       },
     },
   },
