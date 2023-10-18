@@ -10,6 +10,7 @@ return {
         "ansiblels",
         "bashls",
         "cssls",
+        "elixirls",
         "gleam",
         "gopls",
         "html",

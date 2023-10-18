@@ -15,6 +15,7 @@ BREW_PACKAGES=(
   ansible
   ansible-lint
   awscli
+  elixir
   exercism
   fig
   flyctl
