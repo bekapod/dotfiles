@@ -6,11 +6,8 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:#eb6f92 bg:#ea9a97)\
-$c\
 $elixir\
-$elm\
 $golang\
-$haskell\
 $nodejs\
 $python\
 $rust\
@@ -50,18 +47,8 @@ symbol = "󰸏"
 style = "bg:#f6c177 fg:#232136"
 format = '[ $symbol $profile ]($style)'
 
-[c]
-symbol = " "
-style = "bg:#ea9a97 fg:#232136"
-format = '[ $symbol ($version) ]($style)'
-
 [elixir]
 symbol = " "
-style = "bg:#ea9a97 fg:#232136"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
 style = "bg:#ea9a97 fg:#232136"
 format = '[ $symbol ($version) ]($style)'
 
@@ -81,11 +68,6 @@ format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#ea9a97 fg:#232136"
-format = '[ $symbol ($version) ]($style)'
-
-[haskell]
-symbol = " "
 style = "bg:#ea9a97 fg:#232136"
 format = '[ $symbol ($version) ]($style)'
 
