@@ -3,9 +3,9 @@
 set -e
 
 if [ -d "${HOME}/.config/nvim" ]; then
-echo "✅ AstroNvim is already installed"
+echo "\n✅ AstroNvim is already installed"
 else
-echo "📄 Installing AstroNvim"
+echo "\n📦 Installing AstroNvim"
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 fi
 
