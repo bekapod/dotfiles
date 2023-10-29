@@ -11,7 +11,7 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install tmux
 
 echo "🔗 Creating symlinks"
-stow nvim starship zsh
+stow nvim starship tmux zsh
 
 echo "👷‍♀️ Manual installation/updates"
 echo "oh-my-zsh      omz update"
