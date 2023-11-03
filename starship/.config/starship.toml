@@ -1,30 +1,31 @@
+palette = "catppuccin_macchiato"
 command_timeout = 3000
 format = """
-[](#c4a7e7)\
+[](blue)\
 $directory\
-[](bg:#eb6f92 fg:#c4a7e7)\
+[](bg:sapphire fg:blue)\
 $git_branch\
 $git_status\
-[](fg:#eb6f92 bg:#ea9a97)\
+[](fg:sapphire bg:sky)\
 $elixir\
 $golang\
 $nodejs\
 $python\
 $rust\
-[](fg:#ea9a97 bg:#3e8fb0)\
+[](fg:sky bg:green)\
 $kubernetes\
-[](fg:#3e8fb0 bg:#f6c177)\
+[](fg:green bg:yellow)\
 $aws\
-[](fg:#f6c177 bg:#9ccfd8)\
+[](fg:yellow bg:peach)\
 $gcloud\
-[ ](#9ccfd8)\
+[ ](peach)\
 """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
 [directory]
-style = "bg:#c4a7e7 fg:#232136"
+style = "bg:blue fg:crust"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -44,50 +45,78 @@ truncation_symbol = "…/"
 
 [aws]
 symbol = "󰸏"
-style = "bg:#f6c177 fg:#232136"
+style = "bg:yellow fg:crust"
 format = '[ $symbol $profile ]($style)'
 
 [elixir]
 symbol = " "
-style = "bg:#ea9a97 fg:#232136"
+style = "bg:sky fg:crust"
 format = '[ $symbol ($version) ]($style)'
 
 [gcloud]
 symbol = "󱇶"
-style = "bg:#9ccfd8 fg:#232136"
+style = "bg:peach fg:crust"
 format = "[ $symbol ($project) ]($style)"
 
 [git_branch]
 symbol = ""
-style = "bg:#eb6f92 fg:#232136"
+style = "bg:sapphire fg:crust"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#eb6f92 fg:#232136"
+style = "bg:sapphire fg:crust"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#ea9a97 fg:#232136"
+style = "bg:sky fg:crust"
 format = '[ $symbol ($version) ]($style)'
 
 [kubernetes]
 symbol="󱃾"
-style="bg:#3e8fb0 fg:#232136"
+style="bg:green fg:crust"
 format='[ $symbol $context( \($namespace\)) ]($style)'
 disabled = false
 
 [nodejs]
 symbol = ""
-style = "bg:#ea9a97 fg:#232136"
+style = "bg:sky fg:crust"
 format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = ""
-style="bg:#ea9a97 fg:#232136"
+style="bg:sky fg:crust"
 format = '[ $symbol ($version) \(($virtualenv)\) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#ea9a97 fg:#232136"
+style = "bg:sky fg:crust"
 format = '[ $symbol ($version) ]($style)'
+
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
