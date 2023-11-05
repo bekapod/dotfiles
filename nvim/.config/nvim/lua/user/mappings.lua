@@ -33,6 +33,32 @@ return {
     -- keeps cursor centred when paging through search results
     ["n"] = { "nzzzv" },
     ["N"] = { "Nzzzv" },
+
+    ["<leader>x"] = { name = "Trouble" },
+    ["<leader>xx"] = {
+      function() require("trouble").toggle() end,
+      desc = "Trouble: Toggle",
+    },
+    ["<leader>xw"] = {
+      function() require("trouble").toggle "workspace_diagnostics" end,
+      desc = "Trouble: Workspace Diagnostics",
+    },
+    ["<leader>xd"] = {
+      function() require("trouble").toggle "document_diagnostics" end,
+      desc = "Trouble: Document Diagnostics",
+    },
+    ["<leader>xq"] = {
+      function() require("trouble").toggle "quickfix" end,
+      desc = "Trouble: Quickfix",
+    },
+    ["<leader>xl"] = {
+      function() require("trouble").toggle "loclist" end,
+      desc = "Trouble: Location List",
+    },
+    ["<leader>lT"] = {
+      function() require("trouble").toggle "lsp_references" end,
+      desc = "Trouble: LSP References",
+    },
   },
   v = {
     ["J"] = { ":m '>+1<CR>gv=gv" },
