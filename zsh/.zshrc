@@ -122,6 +122,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+export TTAB_CMD_DELAY=3
+
 if [ -d "$HOME/zsh" ]; then
   for file in ~/zsh/*; do
     source $file
