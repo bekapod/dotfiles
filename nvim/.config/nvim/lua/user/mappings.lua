@@ -34,6 +34,12 @@ return {
     ["n"] = { "nzzzv" },
     ["N"] = { "Nzzzv" },
 
+    -- easier mapping for switching between panes
+    ["<S-Up>"] = { "<C-w><Up>" },
+    ["<S-Down>"] = { "<C-w><Down>" },
+    ["<S-Left>"] = { "<C-w><Left>" },
+    ["<S-Right>"] = { "<C-w><Right>" },
+
     ["<leader>x"] = { name = "Trouble" },
     ["<leader>xx"] = {
       function() require("trouble").toggle() end,
