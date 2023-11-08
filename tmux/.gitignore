@@ -1,0 +1,2 @@
+.config/tmuxinator/*.yml
+!.config/tmuxinator/dotfiles.yml
