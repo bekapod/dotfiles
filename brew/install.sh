@@ -40,6 +40,7 @@ BREW_PACKAGES=(
   tmux
   tmuxinator
   volta
+  wezterm
 )
 for pkg in "${BREW_PACKAGES[@]}"; do printf "installing %s\n" "${pkg}" && brew install "${pkg}"; done
 
