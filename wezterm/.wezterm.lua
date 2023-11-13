@@ -17,7 +17,7 @@ config.color_scheme = "my-catppuccin"
 
 ------------------ Font ------------------
 config.font = wezterm.font_with_fallback({
-	"MonoLisa",
+	"MonoLisa Variable",
 	{ family = "FiraCode Nerd Font Mono", scale = 1.5 },
 })
 config.font_size = 14
