@@ -2,3 +2,4 @@ name: garden
 root: ~/garden
 windows:
   - git: lazygit
+  - prompt:
