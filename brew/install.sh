@@ -9,12 +9,16 @@ else
   printf "\n✅ brew is already installed\n"
 fi
 
+printf "\n📦 brew taps\n"
+brew tap oven-sh/bun
+
 printf "\n📦 Installing brew packages\n"
 
 BREW_PACKAGES=(
   ansible
   ansible-lint
   awscli
+  bun
   elixir
   exercism
   fig
