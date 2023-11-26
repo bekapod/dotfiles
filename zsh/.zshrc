@@ -107,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$PYENV_ROOT/shims:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 eval "$(starship init zsh)"
 
