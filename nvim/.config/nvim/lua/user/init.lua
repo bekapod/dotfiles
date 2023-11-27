@@ -1,30 +1,50 @@
 local on_attach = function(client, bufnr)
   require("lsp-inlayhints").on_attach(client, bufnr, false)
+  local package_json_path = vim.fn.getcwd() .. "/package.json"
+  local package_json = io.open(package_json_path, "r")
 
-  local function is_vue()
-    local package_json_path = vim.fn.getcwd() .. "/package.json"
-    local package_json = io.open(package_json_path, "r")
+  local is_vue = false
+  local is_tailwind = false
 
-    if package_json then
-      local package_json_content = package_json:read "*all"
-      package_json:close()
+  if package_json then
+    local package_json_content = package_json:read "*all"
+    package_json:close()
 
-      if package_json_content:find '"vue"' then return true end
+    if package_json_content:find '"vue"' then is_vue = true end
+
+    if package_json_content:find '"tailwindcss"' then is_tailwind = true end
+  end
+
+  local function stop_buffer_client(client_name)
+    vim.lsp.for_each_buffer_client(bufnr, function(buffer_client, client_id)
+      if buffer_client.name == client_name then vim.lsp.stop_client(client_id, true) end
+    end)
+  end
+
+  local function stop_client_if_active_client_is(client_name)
+    for _, active_client in ipairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
+      if active_client.name == client_name then vim.lsp.stop_client(client.id, true) end
     end
   end
 
-  if is_vue() then
+  if is_vue then
     if client.name == "volar" then
-      vim.lsp.for_each_buffer_client(bufnr, function(buffer_client, client_id)
-        if buffer_client.name == "tsserver" then vim.lsp.stop_client(client_id, true) end
-      end)
+      stop_buffer_client "tsserver"
     elseif client.name == "tsserver" then
-      for _, active_client in ipairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
-        if active_client.name == "volar" then vim.lsp.stop_client(client.id, true) end
-      end
+      stop_client_if_active_client_is "volar"
     end
   else
     if client.name == "volar" then vim.lsp.stop_client(client.id, true) end
+  end
+
+  if is_tailwind then
+    if client.name == "tailwindcss" then
+      stop_buffer_client "cssls"
+    elseif client.name == "cssls" then
+      stop_client_if_active_client_is "tailwindcss"
+    end
+  else
+    if client.name == "tailwindcss" then vim.lsp.stop_client(client.id, true) end
   end
 end
 
