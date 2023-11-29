@@ -37,7 +37,6 @@ return {
         "mypy",
         "prettier",
         "ruff",
-        "stylelint",
         "stylua",
       })
     end,
