@@ -16,6 +16,7 @@ return {
         "html",
         "jedi_language_server",
         "lua_ls",
+        "mdx_analyzer",
         "rust_analyzer",
         "svelte",
         "tailwindcss",
