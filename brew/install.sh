@@ -18,6 +18,7 @@ BREW_PACKAGES=(
   ansible
   ansible-lint
   awscli
+  bruno
   bun
   elixir
   exercism
