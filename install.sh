@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 set -e
 
@@ -13,8 +13,8 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install nvm
 ./bin/dotfiles install tmux
 
-echo "🔗 Creating symlinks"
 stow oh-my-zsh mongodb nvim starship tmux wezterm zsh
+echo "🔗 Creating symlinks\n"
 
 echo "👷‍♀️ Manual installation/updates"
 echo "oh-my-zsh      omz update"
