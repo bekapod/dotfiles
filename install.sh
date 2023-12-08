@@ -10,6 +10,7 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install gh
 ./bin/dotfiles install k9s
 ./bin/dotfiles install nvim
+./bin/dotfiles install nvm
 ./bin/dotfiles install tmux
 
 echo "🔗 Creating symlinks"
