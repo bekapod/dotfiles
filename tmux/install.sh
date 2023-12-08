@@ -2,9 +2,13 @@
 
 set -e
 
-if [ -d "${HOME}/.tmux/plugins/tpm" ]; then
-  printf "\n✅ tpm is already installed\n"
+tpm_dir="${HOME}/.tmux/plugins/tpm"
+
+if [ -d $tpm_dir ]; then
+  printf "\n⬆️ Updating tpm\n"
+  cd $tpm_dir
+  git pull origin master
 else
   printf "\n📦 Installing tpm\n"
-  sh -c "$(git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)"
+  sh -c "$(git clone https://github.com/tmux-plugins/tpm $tpm_dir)"
 fi
