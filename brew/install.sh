@@ -38,6 +38,7 @@ BREW_PACKAGES=(
   lazygit
   neovim
   mongosh
+  pnpm
   pyenv
   ripgrep
   rust
