@@ -75,6 +75,9 @@ return {
       function() require("moveline").block_up() end,
     },
 
+    -- paste over currently selected text without yanking it
+    ["p"] = { '"_dp' },
+    ["P"] = { '"_dP' },
   },
   t = {
     -- setting a mapping to false will disable it
