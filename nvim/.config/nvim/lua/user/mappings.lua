@@ -26,7 +26,7 @@ return {
 
     -- when applying the next line to the current line, keeps cursor
     -- in the same place instead of moving it to the new end of the line
-    ["J"] = { "mzJ`z" },
+    -- ["J"] = { "mzJ`z" },
 
     -- keeps cursor centred when doing page jumping
     ["<C-d>"] = { "<C-d>zz" },
