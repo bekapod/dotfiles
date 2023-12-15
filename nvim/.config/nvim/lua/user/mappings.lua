@@ -67,8 +67,14 @@ return {
     },
   },
   v = {
-    ["J"] = { ":m '>+1<CR>gv=gv" },
-    ["K"] = { ":m '<-2<CR>gv=gv" },
+    -- move blocks up and down
+    ["J"] = {
+      function() require("moveline").block_down() end,
+    },
+    ["K"] = {
+      function() require("moveline").block_up() end,
+    },
+
   },
   t = {
     -- setting a mapping to false will disable it
