@@ -13,4 +13,4 @@ else
   git clone https://github.com/catppuccin/k9s.git $k9s_skin_dir --depth 1
 fi
 
-cp "${K9S_CONFIG_PATH}/skins/catppuccin/dist/macchiato.yml" "${K9S_CONFIG_PATH}/skin.yml"
+cp "${K9S_CONFIG_PATH}/skins/catppuccin/dist/catppuccin-macchiato.yaml" "${K9S_CONFIG_PATH}/skin.yml"
