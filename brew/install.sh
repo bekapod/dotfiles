@@ -24,7 +24,6 @@ BREW_PACKAGES=(
   bun
   elixir
   exercism
-  fig
   flyctl
   gh
   git
