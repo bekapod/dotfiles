@@ -1,0 +1,17 @@
+[user]
+	name = Becky
+
+[init]
+	defaultBranch = main
+
+[merge]
+	conflictStyle = zdiff3
+
+[pull]
+	rebase = true
+
+[push]
+	autosetupremote = true
+
+[rerere]
+	enabled = true
