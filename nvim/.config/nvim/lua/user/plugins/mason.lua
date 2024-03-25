@@ -12,7 +12,6 @@ return {
         "cssls",
         "elixirls",
         "eslint",
-        "gleam",
         "gopls",
         "html",
         "jedi_language_server",
@@ -35,7 +34,6 @@ return {
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "actionlint",
         "black",
-        "gleam",
         "mypy",
         "prettier",
         "ruff",
