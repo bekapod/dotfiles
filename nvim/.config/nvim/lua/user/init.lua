@@ -3,14 +3,11 @@ local on_attach = function(client, bufnr)
   local package_json_path = vim.fn.getcwd() .. "/package.json"
   local package_json = io.open(package_json_path, "r")
 
-  local is_vue = false
   local is_tailwind = false
 
   if package_json then
     local package_json_content = package_json:read "*all"
     package_json:close()
-
-    if package_json_content:find '"vue"' then is_vue = true end
 
     if package_json_content:find '"tailwindcss"' then is_tailwind = true end
   end
@@ -25,16 +22,6 @@ local on_attach = function(client, bufnr)
     for _, active_client in ipairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
       if active_client.name == client_name then vim.lsp.stop_client(client.id, true) end
     end
-  end
-
-  if is_vue then
-    if client.name == "volar" then
-      stop_buffer_client "tsserver"
-    elseif client.name == "tsserver" then
-      stop_client_if_active_client_is "volar"
-    end
-  else
-    if client.name == "volar" then vim.lsp.stop_client(client.id, true) end
   end
 
   if is_tailwind then
