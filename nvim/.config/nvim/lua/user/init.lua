@@ -93,6 +93,20 @@ return {
     on_attach = on_attach,
     config = {
       tsserver = {
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue",
+        },
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = "/Users/becky/.nvm/versions/node/v18.13.0/lib/node_modules/@vue/typescript-plugin",
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
+        },
         settings = {
           typescript = {
             inlayHints = {
