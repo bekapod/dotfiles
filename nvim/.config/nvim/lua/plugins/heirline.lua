@@ -2,7 +2,7 @@ return {
   {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
-      local status = require "astronvim.utils.status"
+      local status = require "astroui.status"
 
       opts.winbar = { -- create custom winbar
         -- store the current buffer number

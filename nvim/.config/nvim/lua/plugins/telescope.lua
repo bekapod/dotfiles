@@ -10,7 +10,7 @@ return {
       trouble.open "quickfix"
     end
 
-    return require("astronvim.utils").extend_tbl(opts, {
+    return require("astrocore").extend_tbl(opts, {
       defaults = {
         mappings = {
           i = {
