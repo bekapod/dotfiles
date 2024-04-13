@@ -16,9 +16,9 @@ return {
         "eslint",
         "gopls",
         "html",
-        "jedi_language_server",
         "lua_ls",
         "mdx_analyzer",
+        "pylsp",
         "rust_analyzer",
         "svelte",
         "tailwindcss",
@@ -36,7 +36,6 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "actionlint",
-        "black",
         "mypy",
         "prettier",
         "ruff",
