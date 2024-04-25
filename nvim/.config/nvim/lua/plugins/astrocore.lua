@@ -116,12 +116,8 @@ return {
       },
       v = {
         -- move blocks up and down
-        ["J"] = {
-          function() require("moveline").block_down() end,
-        },
-        ["K"] = {
-          function() require("moveline").block_up() end,
-        },
+        ["J"] = { ":m '>+1<CR>gv=gv" },
+        ["K"] = { ":m '<-2<CR>gv=gv" },
 
         -- paste over currently selected text without yanking it
         ["p"] = { '"_dp' },
