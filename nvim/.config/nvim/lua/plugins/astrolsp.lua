@@ -6,7 +6,6 @@
 ---@type LazySpec
 
 local on_attach = function(client, bufnr)
-  require("lsp-inlayhints").on_attach(client, bufnr, false)
   local package_json_path = vim.fn.getcwd() .. "/package.json"
   local package_json = io.open(package_json_path, "r")
 
