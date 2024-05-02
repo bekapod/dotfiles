@@ -20,6 +20,7 @@ return {
         "lua_ls",
         "mdx_analyzer",
         "rust_analyzer",
+        "snyk_ls",
         "svelte",
         "tailwindcss",
         "tsserver",
