@@ -18,4 +18,4 @@ echo "🔗 Creating symlinks\n"
 
 echo "👷‍♀️ Manual installation/updates"
 echo "oh-my-zsh      omz update"
-echo "tpm            <ctrl+space>I"
+echo "tpm            <ctrl+space>U"
