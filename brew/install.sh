@@ -24,6 +24,7 @@ BREW_PACKAGES=(
   bun
   elixir
   exercism
+  fd
   flyctl
   gh
   git
@@ -47,6 +48,7 @@ BREW_PACKAGES=(
   tmux
   tmuxinator
   wezterm
+  wget
 )
 for pkg in "${BREW_PACKAGES[@]}"; do printf "installing %s\n" "${pkg}" && brew install "${pkg}"; done
 
