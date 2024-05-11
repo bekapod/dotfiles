@@ -9,7 +9,6 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install brew
 ./bin/dotfiles install gh
 ./bin/dotfiles install k9s
-./bin/dotfiles install nvim
 ./bin/dotfiles install nvm
 ./bin/dotfiles install tmux
 
