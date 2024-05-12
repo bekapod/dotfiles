@@ -1,96 +1,99 @@
 palette = "catppuccin_macchiato"
 command_timeout = 3000
 format = """
-[](blue)\
 $directory\
-[](bg:sapphire fg:blue)\
 $git_branch\
+$git_state\
 $git_status\
-[](fg:sapphire bg:sky)\
 $elixir\
 $golang\
 $nodejs\
 $python\
 $rust\
-[](fg:sky bg:green)\
 $kubernetes\
-[](fg:green bg:yellow)\
 $aws\
-[](fg:yellow bg:peach)\
 $gcloud\
-[ ](peach)\
+$cmd_duration\
+$line_break\
+$character\
 """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
-[directory]
-style = "bg:blue fg:crust"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+[character]
+success_symbol = "[[](yellow) ](subtext0)"
+error_symbol = "[[󱇎](red) ](subtext0)"
 
-# Here is how you can shorten some long paths by text replacement
-# similar to mapped_locations in Oh My Posh:
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = " 󰈙 "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important 󰈙 " = " 󰈙 "
+[directory]
+truncation_length = 4
+truncation_symbol = ".../"
+style = "bold lavender"
+format = "[$path ]($style)"
 
 [aws]
 symbol = "󰸏"
-style = "bg:yellow fg:crust"
+style = "fg:peach"
 format = '[ $symbol $profile ]($style)'
+
+[cmd_duration]
+format = "[ $duration]($style) "
+style = "subtext0"
 
 [elixir]
 symbol = " "
-style = "bg:sky fg:crust"
+style = "fg:mauve"
 format = '[ $symbol ($version) ]($style)'
 
 [gcloud]
 symbol = "󱇶"
-style = "bg:peach fg:crust"
+style = "fg:sapphire"
 format = "[ $symbol ($project) ]($style)"
 
 [git_branch]
 symbol = ""
-style = "bg:sapphire fg:crust"
+style = "fg:rosewater"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:sapphire fg:crust"
-format = '[$all_status$ahead_behind ]($style)'
+format = "[ [(*$conflicted$untracked$modified$staged$renamed$deleted) ](218)($ahead_behind$stashed)]($style)"
+style = "fg:flamingo"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\)'
+style = "fg:flamingo"
 
 [golang]
 symbol = " "
-style = "bg:sky fg:crust"
+style = "fg:sky"
 format = '[ $symbol ($version) ]($style)'
 
 [kubernetes]
 symbol="󱃾"
-style="bg:green fg:crust"
+style="fg:lavender"
 format='[ $symbol $context( \($namespace\)) ]($style)'
 disabled = false
 
 [nodejs]
 symbol = ""
-style = "bg:sky fg:crust"
+style = "fg:green"
 format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = ""
-style="bg:sky fg:crust"
+style="fg:yellow"
 format = '[ $symbol ($version) \(($virtualenv)\) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:sky fg:crust"
+style = "fg:maroon"
 format = '[ $symbol ($version) ]($style)'
 
 [palettes.catppuccin_macchiato]
