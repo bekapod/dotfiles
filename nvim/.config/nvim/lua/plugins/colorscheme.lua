@@ -10,6 +10,7 @@ return {
           aerial = true,
           harpoon = true,
           mason = true,
+          neotest = true,
           neotree = true,
           noice = true,
           lsp_trouble = true,

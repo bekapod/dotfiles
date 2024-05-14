@@ -1,3 +1,5 @@
+local Path = require("plenary.path")
+
 return {
   {
     "nvim-neotest/neotest",
@@ -5,6 +7,23 @@ return {
       "marilari88/neotest-vitest",
       "nvim-neotest/neotest-jest",
     },
-    opts = { adapters = { ["neotest-vitest"] = {}, ["neotest-python"] = {}, ["neotest-jest"] = {} } },
+    opts = {
+      adapters = {
+        ["neotest-vitest"] = {},
+        ["neotest-python"] = {
+          is_test_file = function(file_path)
+            if not vim.endswith(file_path, ".py") then
+              return false
+            end
+            local elems = vim.split(file_path, Path.path.sep)
+            local file_name = elems[#elems]
+            return vim.startswith(file_name, "test_")
+              or vim.endswith(file_name, "_test.py")
+              or vim.endswith(file_name, "_tests.py")
+          end,
+        },
+        ["neotest-jest"] = {},
+      },
+    },
   },
 }
