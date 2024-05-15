@@ -21,7 +21,7 @@ config.font = wezterm.font_with_fallback({
 	{ family = "FiraCode Nerd Font Mono", scale = 1.5 },
 })
 config.font_size = 14
-config.line_height = 1.4
+config.line_height = 1.3
 
 ------------------ Window ------------------
 config.hide_tab_bar_if_only_one_tab = true
