@@ -15,3 +15,5 @@
 
 [rerere]
 	enabled = true
+[safe]
+	directory = *
