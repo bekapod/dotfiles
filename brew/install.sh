@@ -18,7 +18,6 @@ printf "\n📦 Installing brew packages\n"
 BREW_PACKAGES=(
   ansible
   ansible-lint
-  arc
   awscli
   bruno
   bun
