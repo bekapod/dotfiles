@@ -49,7 +49,6 @@ return {
       },
       jedi_language_server = {},
       lua_ls = {},
-      snyk_ls = {},
       svelte = {},
       tailwindcss = {},
       tsserver = {
