@@ -3,6 +3,7 @@ return {
   ---@class PluginLspOpts
   opts = {
     ---@type lspconfig.options
+    inlay_hints = { enabled = false },
     servers = {
       ansiblels = {},
       bashls = {},
@@ -51,18 +52,28 @@ return {
       lua_ls = {},
       svelte = {},
       tailwindcss = {},
-      tsserver = {
+      vtsls = {
         filetypes = {
           "javascript",
+          "javascriptreact",
+          "javascript.jsx",
           "typescript",
+          "typescriptreact",
+          "typescript.tsx",
           "vue",
         },
-        init_options = {
-          plugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = "/Users/becky/.nvm/versions/node/v20.13.1/lib/node_modules/@vue/typescript-plugin",
-              languages = { "javascript", "typescript", "vue" },
+        settings = {
+          vtsls = {
+            tsserver = {
+              globalPlugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = "/Users/becky/.nvm/versions/node/v20.13.1/lib/node_modules/@vue/typescript-plugin",
+                  languages = { "javascript", "typescript", "vue" },
+                  configNamespace = "typescript",
+                  enableForWorkspaceTypeScriptVersions = true,
+                },
+              },
             },
           },
         },
