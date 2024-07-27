@@ -38,6 +38,7 @@ BREW_PACKAGES=(
   lazygit
   neovim
   mongosh
+  pipx
   pnpm
   pyenv
   ripgrep
@@ -53,3 +54,6 @@ for pkg in "${BREW_PACKAGES[@]}"; do printf "installing %s\n" "${pkg}" && brew i
 
 brew autoremove -v
 brew cleanup --prune=all
+
+printf "\n📦 Installing argcomplete for pipx completions\n"
+pipx install argcomplete

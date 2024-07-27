@@ -130,3 +130,7 @@ if [ -d "$HOME/zsh" ]; then
     source $file
   done
 fi
+
+export PATH="$PATH:/Users/becky/.local/bin"
+autoload -U compinit && compinit
+eval "$(register-python-argcomplete pipx)"
