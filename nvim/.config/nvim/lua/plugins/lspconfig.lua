@@ -57,6 +57,18 @@ return {
         },
       },
       jedi_language_server = {},
+      jinja_lsp = {
+        filetypes = { "jinja", "htmldjango" },
+        root_dir = function(fname)
+          local nvim_lsp = require("lspconfig")
+          return nvim_lsp.util.find_git_ancestor(fname)
+        end,
+        init_options = {
+          templates = "./templates",
+          backend = { "./" },
+          lang = "python",
+        },
+      },
       lua_ls = {},
       svelte = {},
       tailwindcss = {},

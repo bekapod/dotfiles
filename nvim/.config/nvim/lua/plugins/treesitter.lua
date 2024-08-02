@@ -10,6 +10,7 @@ return {
       "go",
       "gomod",
       "html",
+      "htmldjango",
       "javascript",
       "jsdoc",
       "json",
