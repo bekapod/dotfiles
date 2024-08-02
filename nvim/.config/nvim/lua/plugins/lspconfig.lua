@@ -7,7 +7,15 @@ return {
     servers = {
       ansiblels = {},
       bashls = {},
-      cssls = {},
+      cssls = {
+        settings = {
+          css = {
+            lint = {
+              unknownAtRules = "ignore",
+            },
+          },
+        },
+      },
       golangci_lint_ls = {},
       gopls = {
         settings = {
