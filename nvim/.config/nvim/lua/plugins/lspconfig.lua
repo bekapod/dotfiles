@@ -6,6 +6,7 @@ return {
     inlay_hints = { enabled = false },
     servers = {
       ansiblels = {},
+      astro = {},
       bashls = {},
       cssls = {
         settings = {
