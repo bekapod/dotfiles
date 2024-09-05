@@ -8,6 +8,7 @@ return {
         flavor = "macchiato",
         integrations = {
           aerial = true,
+          fzf = true,
           harpoon = true,
           mason = true,
           neotest = true,
