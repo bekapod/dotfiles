@@ -25,6 +25,7 @@ BREW_PACKAGES=(
   exercism
   fd
   flyctl
+  fzf
   gh
   git
   gleam

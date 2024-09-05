@@ -134,3 +134,5 @@ fi
 export PATH="$PATH:/Users/becky/.local/bin"
 autoload -U compinit && compinit
 eval "$(register-python-argcomplete pipx)"
+
+source <(fzf --zsh)
