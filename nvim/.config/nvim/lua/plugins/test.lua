@@ -5,7 +5,6 @@ return {
     "nvim-neotest/neotest",
     dependencies = {
       "marilari88/neotest-vitest",
-      "nvim-neotest/neotest-jest",
     },
     opts = {
       adapters = {
@@ -22,7 +21,6 @@ return {
               or vim.endswith(file_name, "_tests.py")
           end,
         },
-        ["neotest-jest"] = {},
       },
     },
   },
