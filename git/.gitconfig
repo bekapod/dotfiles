@@ -18,3 +18,5 @@
 
 [safe]
 	directory = *
+[core]
+	editor = nvim
