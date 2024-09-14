@@ -43,6 +43,7 @@ BREW_PACKAGES=(
   pnpm
   pyenv
   ripgrep
+  rlwrap
   rust
   starship
   stow
