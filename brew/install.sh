@@ -37,6 +37,7 @@ BREW_PACKAGES=(
   kubectx
   kubernetes-cli
   lazygit
+  jesseduffield/lazydocker/lazydocker
   neovim
   mongosh
   pipx
