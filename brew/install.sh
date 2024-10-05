@@ -39,9 +39,11 @@ BREW_PACKAGES=(
   jesseduffield/lazydocker/lazydocker
   jesseduffield/lazygit/lazygit
   neovim
+  miller
   mongosh
   pipx
   pnpm
+  poppler
   pyenv
   ripgrep
   rlwrap
@@ -52,6 +54,7 @@ BREW_PACKAGES=(
   tmuxinator
   wezterm
   wget
+  yazi
 )
 for pkg in "${BREW_PACKAGES[@]}"; do printf "installing %s\n" "${pkg}" && brew install "${pkg}"; done
 
