@@ -12,10 +12,11 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install k9s
 ./bin/dotfiles install nvm
 ./bin/dotfiles install tmux
-./bin/dotfiles install yazi
 
 stow git oh-my-zsh mongodb nvim starship tmux wezterm yazi zsh
 echo "🔗 Creating symlinks\n"
+
+./bin/dotfiles install yazi
 
 echo "👷‍♀️ Manual installation/updates"
 echo "oh-my-zsh      omz update"
