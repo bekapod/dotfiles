@@ -13,7 +13,7 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install nvm
 ./bin/dotfiles install tmux
 
-stow git oh-my-zsh mongodb nvim starship tmux wezterm yazi zsh
+stow git k9s oh-my-zsh mongodb nvim starship tmux wezterm yazi zsh
 echo "🔗 Creating symlinks\n"
 
 ./bin/dotfiles install yazi

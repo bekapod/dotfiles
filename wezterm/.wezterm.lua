@@ -7,13 +7,7 @@ if wezterm.config_builder then
 end
 
 ------------------ Colors ------------------
-local catppuccin = wezterm.color.get_builtin_schemes()["Catppuccin Macchiato"]
-catppuccin.background = "#1e2030"
-catppuccin.tab_bar.background = "red"
-config.color_schemes = {
-	["my-catppuccin"] = catppuccin,
-}
-config.color_scheme = "my-catppuccin"
+config.color_scheme = "Dracula (Official)"
 
 ------------------ Font ------------------
 config.font = wezterm.font_with_fallback({
