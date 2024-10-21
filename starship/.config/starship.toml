@@ -1,4 +1,4 @@
-palette = "dracula"
+palette = "tokyonight"
 command_timeout = 3000
 format = """
 $directory\
@@ -28,12 +28,12 @@ error_symbol = "[[󱇎](red) ](subtext0)"
 [directory]
 truncation_length = 4
 truncation_symbol = ".../"
-style = "bold pink"
+style = "bold magenta"
 format = "[$path ]($style)"
 
 [aws]
 symbol = "󰸏"
-style = "fg:orange"
+style = "fg:red"
 format = '[ $symbol $profile ]($style)'
 
 [cmd_duration]
@@ -42,7 +42,7 @@ style = "subtext0"
 
 [elixir]
 symbol = " "
-style = "fg:purple"
+style = "fg:magenta"
 format = '[ $symbol ($version) ]($style)'
 
 [gcloud]
@@ -93,19 +93,15 @@ format = '[ $symbol ($version) \(($virtualenv)\) ]($style)'
 
 [rust]
 symbol = ""
-style = "fg:orange"
+style = "fg:red"
 format = '[ $symbol ($version) ]($style)'
 
-[palettes.dracula]
-background = "#282a36"
-current_line = "#44475a"
-selection = "#44475a"
-foreground = "#f8f8f2"
-comment = "#6272a4"
-cyan = "#8be9fd"
-green = "#50fa7b"
-orange = "#ffb86c"
-pink = "#ff79c6"
-purple = "#bd93f9"
-red = "#ff5555"
-yellow = "#f1fa8c"
+[palettes.tokyonight]
+black = '#444a73'
+red = '#ff757f'
+green = '#c3e88d'
+yellow = '#ffc777'
+blue = '#82aaff'
+magenta = '#c099ff'
+cyan = '#86e1fc'
+white = '#c8d3f5'

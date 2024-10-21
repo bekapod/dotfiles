@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 ------------------ Colors ------------------
-config.color_scheme = "Dracula (Official)"
+config.color_scheme = "Tokyo Night Moon"
 
 ------------------ Font ------------------
 config.font = wezterm.font_with_fallback({
