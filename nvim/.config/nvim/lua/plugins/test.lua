@@ -6,6 +6,7 @@ return {
     dependencies = {
       "marilari88/neotest-vitest",
       "nvim-neotest/neotest-python",
+      "jfpedroza/neotest-elixir",
     },
     config = function()
       local neotest = require("neotest")
@@ -23,6 +24,7 @@ return {
               return vim.endswith(file_name, "_test.py") or vim.endswith(file_name, "_tests.py")
             end,
           }),
+          require("neotest-elixir"),
         },
       })
     end,
