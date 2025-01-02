@@ -52,11 +52,14 @@ BREW_PACKAGES=(
   stow
   tmux
   tmuxinator
-  wezterm
   wget
   yazi
 )
+BREW_CASKS=(
+  ghostty
+)
 for pkg in "${BREW_PACKAGES[@]}"; do printf "installing %s\n" "${pkg}" && brew install "${pkg}"; done
+for pkg in "${BREW_CASKS[@]}"; do printf "installing %s\n" "${pkg}" && brew install --cask "${pkg}"; done
 
 brew autoremove -v
 brew cleanup --prune=all

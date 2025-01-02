@@ -1,0 +1,6 @@
+theme=tokyonight_moon
+font-family="MonoLisa Variable"
+font-size=14
+adjust-cell-height=40%
+adjust-cursor-height=40%
+window-padding-color=extend
