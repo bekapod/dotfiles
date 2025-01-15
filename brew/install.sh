@@ -19,7 +19,6 @@ BREW_PACKAGES=(
   ansible
   ansible-lint
   awscli
-  bruno
   bun
   elixir
   exercism
@@ -56,6 +55,7 @@ BREW_PACKAGES=(
   yazi
 )
 BREW_CASKS=(
+  bruno
   ghostty
 )
 for pkg in "${BREW_PACKAGES[@]}"; do printf "installing %s\n" "${pkg}" && brew install "${pkg}"; done
