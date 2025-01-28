@@ -113,10 +113,6 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH="$PYENV_ROOT/shims:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
 export PNPM_HOME="/Users/becky/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;

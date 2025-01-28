@@ -9,7 +9,6 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install brew
 ./bin/dotfiles install chtsh
 ./bin/dotfiles install gh
-./bin/dotfiles install nvm
 ./bin/dotfiles install tmux
 
 stow ghostty git k9s oh-my-zsh mongodb nvim starship tmux yazi zsh
