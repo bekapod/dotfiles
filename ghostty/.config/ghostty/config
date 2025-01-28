@@ -4,3 +4,4 @@ font-size=14
 adjust-cell-height=40%
 adjust-cursor-height=40%
 window-padding-color=extend
+macos-option-as-alt=true
