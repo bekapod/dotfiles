@@ -119,6 +119,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 alias tx=tmuxinator
 
 if [ -d "$HOME/zsh" ]; then

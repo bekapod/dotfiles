@@ -10,6 +10,7 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install chtsh
 ./bin/dotfiles install gh
 ./bin/dotfiles install tmux
+./bin/dotfiles install volta
 
 stow ghostty git k9s oh-my-zsh mongodb nvim starship tmux yazi zsh
 echo "🔗 Creating symlinks\n"
