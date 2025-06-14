@@ -20,6 +20,7 @@ BREW_PACKAGES=(
   ansible-lint
   awscli
   bun
+  duckdb
   elixir
   exercism
   fd
