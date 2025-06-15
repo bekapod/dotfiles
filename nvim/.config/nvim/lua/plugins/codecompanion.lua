@@ -20,6 +20,22 @@ return {
     },
   },
   opts = {
+    display = {
+      chat = {
+        show_settings = true,
+      },
+    },
+    adapters = {
+      copilot = function()
+        return require("codecompanion.adapters").extend("copilot", {
+          schema = {
+            model = {
+              default = "claude-sonnet-4",
+            },
+          },
+        })
+      end,
+    },
     strategies = {
       chat = {
         adapter = "copilot",
