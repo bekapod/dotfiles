@@ -20,5 +20,3 @@
 	directory = *
 [core]
 	editor = nvim
-[fetch]
-	prune = true
