@@ -1,23 +1,9 @@
 return {
-  "olimorris/codecompanion.nvim",
+  'olimorris/codecompanion.nvim',
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    {
-      "saghen/blink.cmp",
-      opts = {
-        sources = {
-          default = { "codecompanion" },
-          providers = {
-            codecompanion = {
-              name = "CodeCompanion",
-              module = "codecompanion.providers.completion.blink",
-              enabled = true,
-            },
-          },
-        },
-      },
-    },
+    'nvim-lua/plenary.nvim',
+    'nvim-treesitter/nvim-treesitter',
+    'saghen/blink.cmp',
   },
   opts = {
     display = {
@@ -27,10 +13,10 @@ return {
     },
     adapters = {
       copilot = function()
-        return require("codecompanion.adapters").extend("copilot", {
+        return require('codecompanion.adapters').extend('copilot', {
           schema = {
             model = {
-              default = "claude-sonnet-4",
+              default = 'claude-sonnet-4',
             },
           },
         })
@@ -38,33 +24,12 @@ return {
     },
     strategies = {
       chat = {
-        adapter = "copilot",
+        adapter = 'copilot',
       },
       inline = {
-        adapter = "copilot",
+        adapter = 'copilot',
       },
     },
-    extensions = {
-      vectorcode = {
-        ---@type VectorCode.CodeCompanion.ExtensionOpts
-        opts = {
-          tool_group = {
-            enabled = true,
-            collapse = true,
-            -- tools in this array will be included to the `vectorcode_toolbox` tool group
-            extras = {},
-          },
-          tool_opts = {
-            ---@type VectorCode.CodeCompanion.LsToolOpts
-            ls = {},
-            ---@type VectorCode.CodeCompanion.QueryToolOpts
-            query = {},
-            ---@type VectorCode.CodeCompanion.VectoriseToolOpts
-            vectorise = {},
-          },
-        },
-      },
-    },
+    extensions = {},
   },
-  config = true,
 }
