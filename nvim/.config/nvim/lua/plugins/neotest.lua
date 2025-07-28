@@ -2,11 +2,13 @@ return {
   {
     'nvim-neotest/neotest',
     dependencies = {
+      'nvim-lua/plenary.nvim',
       'marilari88/neotest-vitest',
       'nvim-neotest/neotest-python',
       'jfpedroza/neotest-elixir',
     },
     config = function()
+      local Path = require 'plenary.path'
       local neotest = require 'neotest'
 
       neotest.setup {
@@ -26,5 +28,35 @@ return {
         },
       }
     end,
+    keys = {
+      {
+        '<leader>et',
+        function()
+          require('neotest').run.run(vim.fn.expand '%')
+        end,
+        desc = 'Run File',
+      },
+      {
+        '<leader>er',
+        function()
+          require('neotest').run.run()
+        end,
+        desc = 'Run Nearest',
+      },
+      {
+        '<leader>el',
+        function()
+          require('neotest').run.run_last()
+        end,
+        desc = 'Run Last',
+      },
+      {
+        '<leader>eo',
+        function()
+          require('neotest').output.open { enter = true, auto_close = true }
+        end,
+        desc = 'Show Output',
+      },
+    },
   },
 }
