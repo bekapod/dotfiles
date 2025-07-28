@@ -1,3 +1,12 @@
+local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_language_server_path,
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+  enableForWorkspaceTypeScriptVersions = true,
+}
+
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -164,62 +173,8 @@ return {
       },
       marksman = {},
       tailwindcss = {},
-      vtsls = {
-        filetypes = {
-          'javascript',
-          'javascriptreact',
-          'javascript.jsx',
-          'typescript',
-          'typescriptreact',
-          'typescript.tsx',
-          'vue',
-        },
-        settings = {
-          complete_function_calls = true,
-          vtsls = {
-            enableMoveToFileCodeAction = true,
-            autoUseWorkspaceTsdk = true,
-            experimental = {
-              maxInlayHintLength = 30,
-              completion = {
-                enableServerSideFuzzyMatch = true,
-              },
-            },
-          },
-          typescript = {
-            updateImportsOnFileMove = { enabled = 'always' },
-            suggest = {
-              completeFunctionCalls = true,
-            },
-            inlayHints = {
-              enumMemberValues = { enabled = true },
-              functionLikeReturnTypes = { enabled = true },
-              parameterNames = { enabled = 'literals' },
-              parameterTypes = { enabled = true },
-              propertyDeclarationTypes = { enabled = true },
-              variableTypes = { enabled = false },
-            },
-          },
-          tsserver = {
-            globalPlugins = {
-              {
-                name = '@vue/typescript-plugin',
-                location = '/node_modules/@vue/language-server',
-                languages = { 'vue' },
-                configNamespace = 'typescript',
-                enableForWorkspaceTypeScriptVersions = true,
-              },
-            },
-          },
-        },
-      },
-      vue_ls = {
-        init_options = {
-          vue = {
-            hybridMode = true,
-          },
-        },
-      },
+      vtsls = {},
+      vue_ls = {},
       yamlls = {},
       eslint = {
         settings = {
@@ -248,6 +203,19 @@ return {
         end,
       },
     }
+
+    vim.lsp.config('vtsls', {
+      settings = {
+        vtsls = {
+          tsserver = {
+            globalPlugins = {
+              vue_plugin,
+            },
+          },
+        },
+      },
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    })
 
     require('lspconfig').gleam.setup {}
   end,
