@@ -32,4 +32,29 @@ return {
     },
     extensions = {},
   },
+  keys = {
+    {
+      '<C-a>',
+      '<cmd>CodeCompanionActions<cr>',
+      mode = { 'n', 'v' },
+      desc = 'Code Companion: Actions',
+    },
+    {
+      '<LocalLeader>a',
+      '<cmd>CodeCompanionChat Toggle<cr>',
+      mode = { 'n', 'v' },
+      desc = 'Code Companion: Toggle Chat',
+    },
+    {
+      'ga',
+      '<cmd>CodeCompanionChat Add<cr>',
+      mode = 'v',
+      desc = 'Code Companion: Add to Chat',
+    },
+  },
+  config = function(_, opts)
+    require('codecompanion').setup(opts)
+
+    vim.cmd [[cab cc CodeCompanion]]
+  end,
 }
