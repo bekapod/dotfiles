@@ -83,6 +83,7 @@ require('lazy').setup({
   require 'plugins.oil',
   require 'plugins.persistence',
   require 'plugins.telescope',
+  require 'plugins.tmux-navigator',
   require 'plugins.todo-comments',
   require 'plugins.treesitter',
   require 'plugins.which-key',
