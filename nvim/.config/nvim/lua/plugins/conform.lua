@@ -41,7 +41,6 @@ local function get_formatters_by_ft()
   local formatters = {
     lua = { 'stylua' },
     go = { 'goimports', 'gofumpt' },
-    python = { 'ruff' },
   }
 
   for _, ft in ipairs(prettier_supported) do

@@ -7,6 +7,7 @@ return {
       lint.linters_by_ft = {
         elixir = { 'credo' },
         markdown = { 'markdownlint' },
+        python = { 'ruff' },
       }
 
       lint.liners = {
