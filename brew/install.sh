@@ -20,6 +20,7 @@ BREW_PACKAGES=(
   ansible-lint
   awscli
   bun
+  charmbracelet/tap/crush
   duckdb
   elixir
   exercism
