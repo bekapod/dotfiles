@@ -64,6 +64,3 @@ for pkg in "${BREW_CASKS[@]}"; do printf "installing %s\n" "${pkg}" && brew inst
 
 brew autoremove -v
 brew cleanup --prune=all
-
-printf "\n📦 Installing argcomplete for pipx completions\n"
-pipx install argcomplete
