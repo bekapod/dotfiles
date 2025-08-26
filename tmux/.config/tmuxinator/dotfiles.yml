@@ -7,4 +7,5 @@ windows:
       panes:
         - nvim .
   - git: lazygit
+  - ai: crush
   - prompt:
