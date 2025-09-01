@@ -20,3 +20,4 @@
 	directory = *
 [core]
 	editor = nvim
+	excludesfile = /Users/becky/.gitignore
