@@ -30,6 +30,15 @@ return {
         buffers = {
           show_all_buffers = true,
         },
+        live_grep = {
+          additional_args = function(opts)
+            return {
+              '--hidden',
+              '--glob',
+              '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}',
+            }
+          end,
+        },
       },
       extensions = {
         ['ui-select'] = {
