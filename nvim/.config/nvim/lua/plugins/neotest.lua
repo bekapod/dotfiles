@@ -30,25 +30,18 @@ return {
     end,
     keys = {
       {
-        '<leader>et',
+        '<leader>ef',
         function()
           require('neotest').run.run(vim.fn.expand '%')
         end,
         desc = 'Run File',
       },
       {
-        '<leader>er',
+        '<leader>et',
         function()
           require('neotest').run.run()
         end,
         desc = 'Run Nearest',
-      },
-      {
-        '<leader>el',
-        function()
-          require('neotest').run.run_last()
-        end,
-        desc = 'Run Last',
       },
       {
         '<leader>eo',
