@@ -246,6 +246,6 @@ return {
       filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     })
 
-    require('lspconfig').gleam.setup {}
+    vim.lsp.config.gleam = {}
   end,
 }
