@@ -157,3 +157,4 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=separator:#ff966c \
   --color=spinner:#ff007c \
 "
+export PATH="$HOME/.local/bin:$PATH"

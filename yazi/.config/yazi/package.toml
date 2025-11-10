@@ -5,8 +5,8 @@ hash = "92b5c58159a51c567f82b618cee2b78"
 
 [[plugin.deps]]
 use = "AnirudhG07/nbpreview"
-rev = "7fb073f"
-hash = "a3e32d62ea3cc703e6bf677bdb18a544"
+rev = "b504594"
+hash = "b83919985400521dee78e1c352b5d9db"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
