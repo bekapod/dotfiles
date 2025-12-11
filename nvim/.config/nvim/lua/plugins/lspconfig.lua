@@ -136,6 +136,7 @@ return {
           },
         },
       },
+      elixirls = {},
       golangci_lint_ls = {},
       gopls = {
         settings = {

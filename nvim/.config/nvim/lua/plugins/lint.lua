@@ -5,18 +5,10 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        elixir = { 'credo' },
         markdown = { 'markdownlint' },
         python = { 'ruff' },
       }
 
-      lint.liners = {
-        credo = {
-          condition = function(ctx)
-            return vim.fs.find({ '.credo.exs' }, { path = ctx.filename, upward = true })[1]
-          end,
-        },
-      }
       --
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
