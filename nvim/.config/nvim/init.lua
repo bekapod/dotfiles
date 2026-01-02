@@ -75,7 +75,6 @@ require('lazy').setup({
   require 'themes.tokyonight',
 
   require 'plugins.blink',
-  require 'plugins.codecompanion',
   require 'plugins.conform',
   require 'plugins.copilot',
   require 'plugins.debug',
@@ -83,7 +82,6 @@ require('lazy').setup({
   require 'plugins.guess-indent',
   require 'plugins.harpoon',
   require 'plugins.indent_line',
-  require 'plugins.lazydev',
   require 'plugins.lint',
   require 'plugins.lspconfig',
   require 'plugins.mini',

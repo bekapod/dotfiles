@@ -21,7 +21,7 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'copilot', 'codecompanion' },
+      default = { 'lsp', 'path', 'copilot' },
       providers = {
         copilot = {
           name = 'copilot',
@@ -37,11 +37,6 @@ return {
             end
             return items
           end,
-        },
-        codecompanion = {
-          name = 'CodeCompanion',
-          module = 'codecompanion.providers.completion.blink',
-          enabled = true,
         },
       },
     },
