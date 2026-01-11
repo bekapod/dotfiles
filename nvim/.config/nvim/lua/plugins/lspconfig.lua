@@ -19,6 +19,23 @@ return {
     'saghen/blink.cmp',
   },
   config = function()
+    local util = require 'lspconfig.util'
+    local function tw_config(root)
+      local candidates = {
+        'tailwind.config.js',
+        'tailwind.config.cjs',
+        'tailwind.config.ts',
+        'assets/tailwind.config.js',
+        'assets/tailwind.config.cjs',
+        'assets/tailwind.config.ts',
+      }
+      for _, rel in ipairs(candidates) do
+        if vim.loop.fs_stat(root .. '/' .. rel) then
+          return rel
+        end
+      end
+    end
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -202,7 +219,6 @@ return {
         },
       },
       marksman = {},
-      tailwindcss = {},
       vtsls = {},
       vue_ls = {},
       yamlls = {},
@@ -222,15 +238,28 @@ return {
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+    -- require('mason-lspconfig').setup {
+    --   ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+    --   automatic_installation = false,
+    --   handlers = {
+    --     function(server_name)
+    --       local server = servers[server_name] or {}
+    --       server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+    --       require('lspconfig')[server_name].setup(server)
+    --     end,
+    --   },
+    -- }
+
     require('mason-lspconfig').setup {
-      ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      ensure_installed = {},
       automatic_installation = false,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
+          vim.lsp.config(server_name, server)
         end,
+        tailwindcss = function() end, -- prevent mason from setting it up
       },
     }
 
@@ -248,5 +277,74 @@ return {
     })
 
     vim.lsp.config.gleam = {}
+
+    local util = require 'lspconfig.util'
+
+    local function find_tw_css(root)
+      local candidates = {
+        'assets/css/app.css',
+        'src/styles.css',
+        'styles.css',
+      }
+      for _, rel in ipairs(candidates) do
+        local path = root .. '/' .. rel
+        if vim.loop.fs_stat(path) then
+          return path
+        end
+      end
+    end
+
+    local tailwind_base = {
+      name = 'tailwindcss',
+      cmd = { vim.fn.stdpath 'data' .. '/mason/bin/tailwindcss-language-server', '--stdio' },
+      capabilities = vim.tbl_deep_extend('force', {}, capabilities),
+      filetypes = { 'elixir', 'eelixir', 'heex', 'html', 'css', 'javascript', 'typescript', 'tsx' },
+      init_options = {
+        userLanguages = {
+          elixir = 'phoenix-heex',
+          eelixir = 'phoenix-eex',
+          heex = 'phoenix-heex',
+        },
+      },
+      settings = {
+        tailwindCSS = {
+          includeLanguages = {
+            elixir = 'phoenix-heex',
+            eelixir = 'phoenix-eex',
+            heex = 'phoenix-heex',
+          },
+          experimental = {
+            classRegex = {
+              { 'class=\\{\\[(.*?)\\]\\}', '["\\\']([^"\\\']*)["\\\']' },
+              { 'class="([^"]*)"', '[^\\s"]+' },
+              { 'class=\\{([^}]*)\\}', '["\\\']([^"\\\']*)["\\\']' },
+            },
+          },
+        },
+      },
+    }
+
+    vim.api.nvim_create_autocmd('FileType', {
+      group = vim.api.nvim_create_augroup('tailwindcss-start', { clear = true }),
+      pattern = tailwind_base.filetypes,
+      callback = function()
+        local buf = vim.api.nvim_get_current_buf()
+        for _, c in ipairs(vim.lsp.get_clients { bufnr = buf }) do
+          if c.name == 'tailwindcss' then
+            return
+          end
+        end
+        local fname = vim.api.nvim_buf_get_name(buf)
+        local root = util.root_pattern('assets/package.json', 'package.json', 'mix.exs', '.git')(fname) or vim.loop.cwd()
+        local css = find_tw_css(root)
+        local config = vim.tbl_deep_extend('force', {}, tailwind_base)
+
+        if css then
+          config.settings.tailwindCSS.experimental.configFile = css
+        end
+
+        vim.lsp.start(vim.tbl_extend('force', config, { root_dir = root }))
+      end,
+    })
   end,
 }
