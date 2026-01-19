@@ -18,6 +18,7 @@ BREW_PACKAGES=(
   awscli
   oven-sh/bun/bun
   charmbracelet/tap/crush
+  claude-code
   duckdb
   elixir
   exercism
@@ -53,12 +54,7 @@ BREW_PACKAGES=(
   wget
   yazi
 )
-BREW_CASKS=(
-  bruno
-  ghostty
-)
 for pkg in "${BREW_PACKAGES[@]}"; do printf "installing %s\n" "${pkg}" && brew install "${pkg}"; done
-for pkg in "${BREW_CASKS[@]}"; do printf "installing %s\n" "${pkg}" && brew install --cask "${pkg}"; done
 
 brew autoremove -v
 brew cleanup --prune=all
