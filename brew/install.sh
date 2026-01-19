@@ -10,16 +10,13 @@ else
   brew update
 fi
 
-printf "\n📦 brew taps\n"
-brew tap oven-sh/bun
-
 printf "\n📦 Installing brew packages\n"
 
 BREW_PACKAGES=(
   ansible
   ansible-lint
   awscli
-  bun
+  oven-sh/bun/bun
   charmbracelet/tap/crush
   duckdb
   elixir
