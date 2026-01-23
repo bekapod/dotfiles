@@ -218,6 +218,7 @@ return {
           },
         },
       },
+      markdownlint = {},
       marksman = {},
       vtsls = {},
       vue_ls = {},
