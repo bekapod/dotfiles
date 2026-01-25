@@ -5,3 +5,4 @@ adjust-cell-height=40%
 adjust-cursor-height=40%
 window-padding-color=extend
 macos-option-as-alt=left
+keybind=shift+enter=text:\x1b\r
