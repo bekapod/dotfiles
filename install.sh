@@ -8,7 +8,6 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install oh-my-zsh
 ./bin/dotfiles install brew
 ./bin/dotfiles install chtsh
-./bin/dotfiles install gh
 ./bin/dotfiles install tmux
 ./bin/dotfiles install volta
 ./bin/dotfiles install uv
