@@ -1,5 +1,6 @@
 name: garden
 root: ~/garden
 windows:
-  - git: lazygit
+  - claude: claude
+  - ai: opencode
   - prompt:

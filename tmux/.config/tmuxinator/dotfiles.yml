@@ -7,5 +7,6 @@ windows:
       panes:
         - nvim .
   - git: lazygit
-  - ai: crush
+  - claude: claude
+  - ai: opencode
   - prompt:
