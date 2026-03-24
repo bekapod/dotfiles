@@ -40,6 +40,7 @@ BREW_PACKAGES=(
   neovim
   miller
   mongosh
+  anomalyco/tap/opencode
   pipx
   pnpm
   poppler
