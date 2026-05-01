@@ -52,6 +52,7 @@ BREW_PACKAGES=(
   stow
   tmux
   tmuxinator
+  tree-sitter-cli
   wget
   yazi
 )
