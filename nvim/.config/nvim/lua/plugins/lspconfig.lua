@@ -11,7 +11,7 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     { 'mason-org/mason.nvim', opts = {
-      ensure_installed = { 'goimports', 'gofumpt', 'gomodifytags', 'impl', 'delve' },
+      ensure_installed = { 'goimports', 'gofumpt', 'gomodifytags', 'impl' },
     } },
     'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -218,7 +218,6 @@ return {
           },
         },
       },
-      markdownlint = {},
       marksman = {},
       vtsls = {},
       vue_ls = {},
@@ -230,12 +229,13 @@ return {
           format = false,
         },
       },
-      prettier = {},
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua',
+      'prettier',
+      'markdownlint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -278,8 +278,6 @@ return {
     })
 
     vim.lsp.config.gleam = {}
-
-    local util = require 'lspconfig.util'
 
     local function find_tw_css(root)
       local candidates = {

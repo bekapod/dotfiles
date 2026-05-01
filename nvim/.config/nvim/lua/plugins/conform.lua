@@ -20,21 +20,16 @@ local prettier_supported = {
 }
 
 function Prettier.has_config(ctx)
-  vim.fn.system { 'prettier', '--find-config-path', ctx.filename }
-  return vim.v.shell_error == 0
+  return vim.fs.find({
+    '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.yaml',
+    '.prettierrc.js', '.prettierrc.cjs', '.prettierrc.mjs',
+    '.prettierrc.toml', 'prettier.config.js', 'prettier.config.cjs',
+    'prettier.config.mjs', 'prettier.config.ts',
+  }, { upward = true, path = vim.fs.dirname(ctx.filename) })[1] ~= nil
 end
 
 function Prettier.has_parser(ctx)
-  local ft = vim.bo[ctx.buf].filetype --[[@as string]]
-  if vim.tbl_contains(prettier_supported, ft) then
-    return true
-  end
-  local ret = vim.fn.system { 'prettier', '--file-info', ctx.filename }
-  ---@type boolean, string?
-  local ok, parser = pcall(function()
-    return vim.fn.json_decode(ret).inferredParser
-  end)
-  return ok and parser and parser ~= vim.NIL
+  return vim.tbl_contains(prettier_supported, vim.bo[ctx.buf].filetype)
 end
 
 local function get_formatters_by_ft()
