@@ -10,8 +10,8 @@ hash = "b83919985400521dee78e1c352b5d9db"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
-rev = "8c4086c"
-hash = "85316b5e9abeae2531d3e5d02a094381"
+rev = "e73fd74"
+hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
