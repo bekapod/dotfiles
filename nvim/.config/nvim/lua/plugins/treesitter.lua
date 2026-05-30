@@ -9,7 +9,8 @@ return {
       'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore',
       'gleam', 'go', 'gomod', 'gosum', 'gowork', 'heex', 'html', 'htmldjango',
       'javascript', 'jsdoc', 'json', 'lua', 'luadoc', 'markdown',
-      'markdown_inline', 'mermaid', 'ninja', 'python', 'query', 'regex',
+      'markdown_inline', 'mermaid', 'ninja', 'php', 'phpdoc', 'blade',
+      'python', 'query', 'regex',
       'rust', 'scss', 'svelte', 'toml', 'tsx', 'typescript', 'vim', 'vimdoc',
       'vue', 'yaml',
     }
@@ -20,7 +21,7 @@ return {
       'bash', 'c', 'css', 'diff', 'dockerfile', 'eelixir', 'elixir',
       'gitconfig', 'gitrebase', 'gitattributes', 'gitcommit', 'gitignore',
       'gleam', 'go', 'gomod', 'gosum', 'gowork', 'heex', 'html', 'htmldjango',
-      'javascript', 'json', 'lua', 'markdown', 'mermaid', 'ninja', 'python',
+      'javascript', 'json', 'lua', 'markdown', 'mermaid', 'ninja', 'php', 'blade', 'python',
       'query', 'rust', 'scss', 'svelte', 'toml', 'typescriptreact',
       'typescript', 'vim', 'help', 'vue', 'yaml',
     }

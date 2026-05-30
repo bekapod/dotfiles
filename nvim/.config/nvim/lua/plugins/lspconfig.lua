@@ -154,6 +154,7 @@ return {
         },
       },
       elixirls = {},
+      intelephense = {},
       golangci_lint_ls = {},
       gopls = {
         settings = {
@@ -297,12 +298,13 @@ return {
       name = 'tailwindcss',
       cmd = { vim.fn.stdpath 'data' .. '/mason/bin/tailwindcss-language-server', '--stdio' },
       capabilities = vim.tbl_deep_extend('force', {}, capabilities),
-      filetypes = { 'elixir', 'eelixir', 'heex', 'html', 'css', 'javascript', 'typescript', 'tsx' },
+      filetypes = { 'elixir', 'eelixir', 'heex', 'html', 'css', 'javascript', 'typescript', 'tsx', 'blade', 'php' },
       init_options = {
         userLanguages = {
           elixir = 'phoenix-heex',
           eelixir = 'phoenix-eex',
           heex = 'phoenix-heex',
+          blade = 'html',
         },
       },
       settings = {
@@ -311,12 +313,15 @@ return {
             elixir = 'phoenix-heex',
             eelixir = 'phoenix-eex',
             heex = 'phoenix-heex',
+            blade = 'html',
           },
           experimental = {
             classRegex = {
               { 'class=\\{\\[(.*?)\\]\\}', '["\\\']([^"\\\']*)["\\\']' },
               { 'class="([^"]*)"', '[^\\s"]+' },
               { 'class=\\{([^}]*)\\}', '["\\\']([^"\\\']*)["\\\']' },
+              -- Blade: @class([...]) and $attributes->class([...])
+              { '(?:@|->)class\\(\\[(.*?)\\]\\)', '["\\\']([^"\\\']*)["\\\']' },
             },
           },
         },

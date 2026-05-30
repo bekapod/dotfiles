@@ -36,6 +36,7 @@ local function get_formatters_by_ft()
   local formatters = {
     lua = { 'stylua' },
     go = { 'goimports', 'gofumpt' },
+    php = { 'pint' },
   }
 
   for _, ft in ipairs(prettier_supported) do
@@ -78,6 +79,15 @@ return {
         condition = function(_, ctx)
           return Prettier.has_parser(ctx) and Prettier.has_config(ctx)
         end,
+      },
+      pint = {
+        command = 'vendor/bin/pint',
+        args = { '$FILENAME' },
+        stdin = false,
+        cwd = function(self, ctx)
+          return require('conform.util').root_file { 'composer.json' }(self, ctx)
+        end,
+        require_cwd = true,
       },
     },
   },

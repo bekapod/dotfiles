@@ -6,6 +6,7 @@ return {
       'marilari88/neotest-vitest',
       'nvim-neotest/neotest-python',
       'jfpedroza/neotest-elixir',
+      'olimorris/neotest-phpunit',
     },
     config = function()
       local Path = require 'plenary.path'
@@ -25,6 +26,12 @@ return {
             end,
           },
           require 'neotest-elixir',
+          require 'neotest-phpunit' {
+            phpunit_cmd = function()
+              local root = vim.fs.root(0, 'composer.json')
+              return root and (root .. '/vendor/bin/phpunit') or 'vendor/bin/phpunit'
+            end,
+          },
         },
       }
     end,
