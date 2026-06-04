@@ -32,6 +32,7 @@ return {
               return root and (root .. '/vendor/bin/phpunit') or 'vendor/bin/phpunit'
             end,
           },
+          require 'rustaceanvim.neotest',
         },
       }
     end,

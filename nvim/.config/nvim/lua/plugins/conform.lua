@@ -37,6 +37,7 @@ local function get_formatters_by_ft()
     lua = { 'stylua' },
     go = { 'goimports', 'gofumpt' },
     php = { 'pint' },
+    rust = { 'rustfmt' },
   }
 
   for _, ft in ipairs(prettier_supported) do

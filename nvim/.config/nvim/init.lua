@@ -91,6 +91,7 @@ require('lazy').setup({
   require 'plugins.neotest',
   require 'plugins.oil',
   require 'plugins.persistence',
+  require 'plugins.rustaceanvim',
   require 'plugins.telescope',
   require 'plugins.tmux-navigator',
   require 'plugins.todo-comments',
