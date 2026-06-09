@@ -1,4 +1,5 @@
 .config/tmuxinator/*.yml
 !.config/tmuxinator/dotfiles.yml
 !.config/tmuxinator/garden.yml
-!.config/tmuxinator/production-ready-serverless-workshop.yml
+!.config/tmuxinator/luxo.yml
+!.config/tmuxinator/tillary.yml
