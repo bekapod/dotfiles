@@ -14,6 +14,39 @@ return {
 
     appearance = {
       nerd_font_variant = 'mono',
+      kind_icons = {
+        Copilot = '',
+        Text = '󰉿',
+        Method = '󰊕',
+        Function = '󰊕',
+        Constructor = '󰒓',
+
+        Field = '󰜢',
+        Variable = '󰆦',
+        Property = '󰖷',
+
+        Class = '󱡠',
+        Interface = '󱡠',
+        Struct = '󱡠',
+        Module = '󰅩',
+
+        Unit = '󰪚',
+        Value = '󰦨',
+        Enum = '󰦨',
+        EnumMember = '󰦨',
+
+        Keyword = '󰻾',
+        Constant = '󰏿',
+
+        Snippet = '󱄽',
+        Color = '󰏘',
+        File = '󰈔',
+        Reference = '󰬲',
+        Folder = '󰉋',
+        Event = '󱐋',
+        Operator = '󰪚',
+        TypeParameter = '󰬛',
+      },
     },
 
     completion = {
@@ -21,7 +54,7 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'copilot' },
+      default = { 'lsp', 'path', 'buffer', 'copilot' },
       providers = {
         copilot = {
           name = 'copilot',
