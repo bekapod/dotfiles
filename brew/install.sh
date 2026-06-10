@@ -47,6 +47,7 @@ BREW_PACKAGES=(
   pyenv
   ripgrep
   rlwrap
+  rtk
   starship
   stow
   tmux
