@@ -18,7 +18,7 @@ BREW_PACKAGES=(
   awscli
   oven-sh/bun/bun
   charmbracelet/tap/crush
-  claude-code
+  claude-code@latest
   duckdb
   elixir
   exercism
