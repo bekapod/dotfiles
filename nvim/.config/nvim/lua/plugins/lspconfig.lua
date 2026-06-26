@@ -272,7 +272,7 @@ local function find_tw_css(root)
   }
   for _, rel in ipairs(candidates) do
     local path = root .. '/' .. rel
-    if vim.loop.fs_stat(path) then
+    if vim.uv.fs_stat(path) then
       return path
     end
   end
@@ -323,7 +323,7 @@ vim.api.nvim_create_autocmd('FileType', {
       end
     end
     local fname = vim.api.nvim_buf_get_name(buf)
-    local root = util.root_pattern('assets/package.json', 'package.json', 'mix.exs', '.git')(fname) or vim.loop.cwd()
+    local root = util.root_pattern('assets/package.json', 'package.json', 'mix.exs', '.git')(fname) or vim.uv.cwd()
     local css = find_tw_css(root)
     local config = vim.tbl_deep_extend('force', {}, tailwind_base)
 
