@@ -3,6 +3,10 @@ vim.pack.add {
   { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.*' },
 }
 
+local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
+local copilot_kind = #CompletionItemKind + 1
+CompletionItemKind[copilot_kind] = 'Copilot'
+
 require('blink.cmp').setup {
   keymap = {
     preset = 'default',
@@ -58,11 +62,8 @@ require('blink.cmp').setup {
         score_offset = 100,
         async = true,
         transform_items = function(_, items)
-          local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
-          local kind_idx = #CompletionItemKind + 1
-          CompletionItemKind[kind_idx] = 'Copilot'
           for _, item in ipairs(items) do
-            item.kind = kind_idx
+            item.kind = copilot_kind
           end
           return items
         end,
