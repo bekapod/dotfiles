@@ -1,10 +1,6 @@
-return {
-  'folke/tokyonight.nvim',
-  priority = 1000,
-  config = function()
-    ---@diagnostic disable-next-line: missing-fields
-    require('tokyonight').setup {}
+vim.pack.add { 'https://github.com/folke/tokyonight.nvim' }
 
-    vim.cmd.colorscheme 'tokyonight-moon'
-  end,
-}
+---@diagnostic disable-next-line: missing-fields
+require('tokyonight').setup {}
+
+vim.cmd.colorscheme 'tokyonight-moon'

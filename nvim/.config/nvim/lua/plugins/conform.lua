@@ -47,49 +47,40 @@ local function get_formatters_by_ft()
   return formatters
 end
 
-return {
-  'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
-  cmd = { 'ConformInfo' },
-  keys = {
-    {
-      '<leader>f',
-      function()
-        require('conform').format { async = true, lsp_format = 'fallback' }
+vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
+
+require('conform').setup {
+  notify_on_error = false,
+  format_on_save = function(bufnr)
+    local disable_filetypes = { c = true, cpp = true }
+    if disable_filetypes[vim.bo[bufnr].filetype] then
+      return nil
+    else
+      return {
+        timeout_ms = 500,
+        lsp_format = 'fallback',
+      }
+    end
+  end,
+  formatters_by_ft = get_formatters_by_ft(),
+  formatters = {
+    prettier = {
+      condition = function(_, ctx)
+        return Prettier.has_parser(ctx) and Prettier.has_config(ctx)
       end,
-      mode = '',
-      desc = '[F]ormat buffer',
     },
-  },
-  opts = {
-    notify_on_error = false,
-    format_on_save = function(bufnr)
-      local disable_filetypes = { c = true, cpp = true }
-      if disable_filetypes[vim.bo[bufnr].filetype] then
-        return nil
-      else
-        return {
-          timeout_ms = 500,
-          lsp_format = 'fallback',
-        }
-      end
-    end,
-    formatters_by_ft = get_formatters_by_ft(),
-    formatters = {
-      prettier = {
-        condition = function(_, ctx)
-          return Prettier.has_parser(ctx) and Prettier.has_config(ctx)
-        end,
-      },
-      pint = {
-        command = 'vendor/bin/pint',
-        args = { '$FILENAME' },
-        stdin = false,
-        cwd = function(self, ctx)
-          return require('conform.util').root_file { 'composer.json' }(self, ctx)
-        end,
-        require_cwd = true,
-      },
+    pint = {
+      command = 'vendor/bin/pint',
+      args = { '$FILENAME' },
+      stdin = false,
+      cwd = function(self, ctx)
+        return require('conform.util').root_file { 'composer.json' }(self, ctx)
+      end,
+      require_cwd = true,
     },
   },
 }
+
+vim.keymap.set('', '<leader>f', function()
+  require('conform').format { async = true, lsp_format = 'fallback' }
+end, { desc = '[F]ormat buffer' })

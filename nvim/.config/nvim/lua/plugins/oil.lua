@@ -1,14 +1,10 @@
-return {
-  'stevearc/oil.nvim',
-  lazy = false,
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  keys = {
-    { '-', '<cmd>Oil<CR>', desc = 'File Explorer' },
-  },
-  opts = {
-    default_file_explorer = true,
-    view_options = {
-      show_hidden = true,
-    },
+vim.pack.add { 'https://github.com/stevearc/oil.nvim' }
+
+require('oil').setup {
+  default_file_explorer = true,
+  view_options = {
+    show_hidden = true,
   },
 }
+
+vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'File Explorer' })

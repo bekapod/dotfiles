@@ -62,60 +62,45 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- [[ Install `lazy.nvim` plugin manager ]]
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-  if vim.v.shell_error ~= 0 then
-    error('Error cloning lazy.nvim:\n' .. out)
-  end
-end
+-- [[ Build hooks for vim.pack plugins ]]
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    if kind ~= 'install' and kind ~= 'update' then
+      return
+    end
 
----@type vim.Option
-local rtp = vim.opt.rtp
-rtp:prepend(lazypath)
-
--- [[ Configure and install plugins ]]
-require('lazy').setup({
-  require 'themes.tokyonight',
-
-  require 'plugins.blink',
-  require 'plugins.conform',
-  require 'plugins.copilot',
-  require 'plugins.debug',
-  require 'plugins.gitsigns',
-  require 'plugins.guess-indent',
-  require 'plugins.harpoon',
-  require 'plugins.indent_line',
-  require 'plugins.lint',
-  require 'plugins.lspconfig',
-  require 'plugins.mini',
-  require 'plugins.neotest',
-  require 'plugins.oil',
-  require 'plugins.persistence',
-  require 'plugins.rustaceanvim',
-  require 'plugins.telescope',
-  require 'plugins.tmux-navigator',
-  require 'plugins.todo-comments',
-  require 'plugins.treesitter',
-  require 'plugins.which-key',
-}, {
-  ui = {
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
+    if name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
+      vim.system({ 'make' }, { cwd = ev.data.path }):wait()
+    elseif name == 'nvim-treesitter' then
+      if not ev.data.active then
+        vim.cmd.packadd 'nvim-treesitter'
+      end
+      vim.cmd 'TSUpdate'
+    end
+  end,
 })
+
+-- [[ Load plugins ]]
+require 'themes.tokyonight'
+require 'plugins.mini'
+require 'plugins.blink'
+require 'plugins.lspconfig'
+require 'plugins.rustaceanvim'
+require 'plugins.conform'
+require 'plugins.copilot'
+require 'plugins.debug'
+require 'plugins.gitsigns'
+require 'plugins.guess-indent'
+require 'plugins.harpoon'
+require 'plugins.indent_line'
+require 'plugins.lint'
+require 'plugins.neotest'
+require 'plugins.oil'
+require 'plugins.persistence'
+require 'plugins.telescope'
+require 'plugins.tmux-navigator'
+require 'plugins.todo-comments'
+require 'plugins.treesitter'
+require 'plugins.which-key'
