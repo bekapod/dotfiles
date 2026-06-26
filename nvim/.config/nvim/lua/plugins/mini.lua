@@ -1,6 +1,11 @@
 return {
   'nvim-mini/mini.nvim',
   config = function()
+    if vim.g.have_nerd_font then
+      require('mini.icons').setup()
+      MiniIcons.mock_nvim_web_devicons()
+    end
+
     --  - va)  - [V]isually select [A]round [)]paren
     --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
     --  - ci'  - [C]hange [I]nside [']quote
