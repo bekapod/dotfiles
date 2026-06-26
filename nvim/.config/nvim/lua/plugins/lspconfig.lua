@@ -117,6 +117,15 @@ return {
     vim.diagnostic.config {
       severity_sort = true,
       float = { border = 'rounded', source = 'if_many' },
+      jump = {
+        on_jump = function(_, bufnr)
+          vim.diagnostic.open_float {
+            bufnr = bufnr,
+            scope = 'cursor',
+            focus = false,
+          }
+        end,
+      },
       underline = { severity = vim.diagnostic.severity.ERROR },
       signs = vim.g.have_nerd_font and {
         text = {
