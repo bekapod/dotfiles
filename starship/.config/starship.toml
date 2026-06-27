@@ -1,4 +1,4 @@
-palette = "tokyonight"
+palette = "rose-pine"
 command_timeout = 3000
 format = """
 $directory\
@@ -96,12 +96,12 @@ symbol = ""
 style = "fg:red"
 format = '[ $symbol ($version) ]($style)'
 
-[palettes.tokyonight]
-black = '#444a73'
-red = '#ff757f'
-green = '#c3e88d'
-yellow = '#ffc777'
-blue = '#82aaff'
-magenta = '#c099ff'
-cyan = '#86e1fc'
-white = '#c8d3f5'
+[palettes.rose-pine]
+black = '#393552'
+red = '#eb6f92'
+green = '#3e8fb0'
+yellow = '#f6c177'
+blue = '#3e8fb0'
+magenta = '#c4a7e7'
+cyan = '#9ccfd8'
+white = '#e0def4'

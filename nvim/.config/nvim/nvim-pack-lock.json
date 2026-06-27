@@ -33,11 +33,6 @@
       "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
       "src": "https://github.com/NMAC427/guess-indent.nvim"
     },
-    "harpoon": {
-      "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
-      "src": "https://github.com/ThePrimeagen/harpoon",
-      "version": "'harpoon2'"
-    },
     "indent-blankline.nvim": {
       "rev": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
@@ -81,6 +76,10 @@
     "neotest-vitest": {
       "rev": "2f19d215d7d4d7f121826f99f6f35a81e2c18a6f",
       "src": "https://github.com/marilari88/neotest-vitest"
+    },
+    "neovim": {
+      "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
+      "src": "https://github.com/rose-pine/neovim"
     },
     "nvim-dap": {
       "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",

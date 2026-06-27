@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
 })
 
 -- [[ Load plugins ]]
-require 'themes.tokyonight'
+require 'themes.rose-pine'
 require 'plugins.mini'
 require 'plugins.blink'
 require 'plugins.lspconfig'
