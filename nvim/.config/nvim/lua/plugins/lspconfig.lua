@@ -15,9 +15,7 @@ vim.pack.add {
   'https://github.com/neovim/nvim-lspconfig',
 }
 
-require('mason').setup {
-  ensure_installed = { 'goimports', 'gofumpt', 'gomodifytags', 'impl' },
-}
+require('mason').setup {}
 require('fidget').setup {}
 
 local util = require 'lspconfig.util'
@@ -235,6 +233,10 @@ vim.list_extend(ensure_installed, {
   'stylua',
   'prettier',
   'markdownlint',
+  'goimports',
+  'gofumpt',
+  'gomodifytags',
+  'impl',
 })
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
