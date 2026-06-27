@@ -20,6 +20,20 @@ require('fidget').setup {}
 
 local util = require 'lspconfig.util'
 
+local function find_tw_css(root)
+  local candidates = {
+    'assets/css/app.css',
+    'src/styles.css',
+    'styles.css',
+  }
+  for _, rel in ipairs(candidates) do
+    local path = root .. '/' .. rel
+    if vim.uv.fs_stat(path) then
+      return path
+    end
+  end
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
   callback = function(event)
@@ -265,74 +279,3 @@ vim.lsp.config('vtsls', {
 })
 
 vim.lsp.config.gleam = {}
-
-local function find_tw_css(root)
-  local candidates = {
-    'assets/css/app.css',
-    'src/styles.css',
-    'styles.css',
-  }
-  for _, rel in ipairs(candidates) do
-    local path = root .. '/' .. rel
-    if vim.uv.fs_stat(path) then
-      return path
-    end
-  end
-end
-
-local tailwind_base = {
-  name = 'tailwindcss',
-  cmd = { vim.fn.stdpath 'data' .. '/mason/bin/tailwindcss-language-server', '--stdio' },
-  capabilities = vim.tbl_deep_extend('force', {}, capabilities),
-  filetypes = { 'elixir', 'eelixir', 'heex', 'html', 'css', 'javascript', 'typescript', 'tsx', 'blade', 'php' },
-  init_options = {
-    userLanguages = {
-      elixir = 'phoenix-heex',
-      eelixir = 'phoenix-eex',
-      heex = 'phoenix-heex',
-      blade = 'html',
-    },
-  },
-  settings = {
-    tailwindCSS = {
-      includeLanguages = {
-        elixir = 'phoenix-heex',
-        eelixir = 'phoenix-eex',
-        heex = 'phoenix-heex',
-        blade = 'html',
-      },
-      experimental = {
-        classRegex = {
-          { 'class=\\{\\[(.*?)\\]\\}', '["\\\']([^"\\\']*)["\\\']' },
-          { 'class="([^"]*)"', '[^\\s"]+' },
-          { 'class=\\{([^}]*)\\}', '["\\\']([^"\\\']*)["\\\']' },
-          -- Blade: @class([...]) and $attributes->class([...])
-          { '(?:@|->)class\\(\\[(.*?)\\]\\)', '["\\\']([^"\\\']*)["\\\']' },
-        },
-      },
-    },
-  },
-}
-
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('tailwindcss-start', { clear = true }),
-  pattern = tailwind_base.filetypes,
-  callback = function()
-    local buf = vim.api.nvim_get_current_buf()
-    for _, c in ipairs(vim.lsp.get_clients { bufnr = buf }) do
-      if c.name == 'tailwindcss' then
-        return
-      end
-    end
-    local fname = vim.api.nvim_buf_get_name(buf)
-    local root = util.root_pattern('assets/package.json', 'package.json', 'mix.exs', '.git')(fname) or vim.uv.cwd()
-    local css = find_tw_css(root)
-    local config = vim.tbl_deep_extend('force', {}, tailwind_base)
-
-    if css then
-      config.settings.tailwindCSS.experimental.configFile = css
-    end
-
-    vim.lsp.start(vim.tbl_extend('force', config, { root_dir = root }))
-  end,
-})
