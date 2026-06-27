@@ -22,13 +22,11 @@ require('telescope').setup {
       show_all_buffers = true,
     },
     live_grep = {
-      additional_args = function(opts)
-        return {
-          '--hidden',
-          '--glob',
-          '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}',
-        }
-      end,
+      additional_args = {
+        '--hidden',
+        '--glob',
+        '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}',
+      },
     },
   },
   extensions = {
