@@ -1,5 +1,3 @@
-local Prettier = {}
-
 local prettier_supported = {
   'css',
   'graphql',
@@ -19,7 +17,7 @@ local prettier_supported = {
   'yaml',
 }
 
-function Prettier.has_config(ctx)
+local function has_prettier_config(ctx)
   return vim.fs.find({
     '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.yaml',
     '.prettierrc.js', '.prettierrc.cjs', '.prettierrc.mjs',
@@ -28,7 +26,7 @@ function Prettier.has_config(ctx)
   }, { upward = true, path = vim.fs.dirname(ctx.filename) })[1] ~= nil
 end
 
-function Prettier.has_parser(ctx)
+local function has_prettier_parser(ctx)
   return vim.tbl_contains(prettier_supported, vim.bo[ctx.buf].filetype)
 end
 
@@ -66,7 +64,7 @@ require('conform').setup {
   formatters = {
     prettier = {
       condition = function(_, ctx)
-        return Prettier.has_parser(ctx) and Prettier.has_config(ctx)
+        return has_prettier_parser(ctx) and has_prettier_config(ctx)
       end,
     },
     pint = {
