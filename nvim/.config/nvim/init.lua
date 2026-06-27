@@ -65,19 +65,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ Build hooks for vim.pack plugins ]]
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
-    local name = ev.data.spec.name
     local kind = ev.data.kind
     if kind ~= 'install' and kind ~= 'update' then
       return
     end
-
-    if name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
+    if ev.data.spec.name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
       vim.system({ 'make' }, { cwd = ev.data.path }):wait()
-    elseif name == 'nvim-treesitter' then
-      if not ev.data.active then
-        vim.cmd.packadd 'nvim-treesitter'
-      end
-      vim.cmd 'TSUpdate'
     end
   end,
 })
