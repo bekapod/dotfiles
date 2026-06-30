@@ -1,9 +1,17 @@
 local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+local astro_ts_plugin_path = vim.fn.stdpath 'data' .. '/mason/packages/astro-language-server/node_modules/@astrojs/ts-plugin'
+
 local vue_plugin = {
   name = '@vue/typescript-plugin',
   location = vue_language_server_path,
   languages = { 'vue' },
   configNamespace = 'typescript',
+  enableForWorkspaceTypeScriptVersions = true,
+}
+
+local astro_plugin = {
+  name = '@astrojs/ts-plugin',
+  location = astro_ts_plugin_path,
   enableForWorkspaceTypeScriptVersions = true,
 }
 
@@ -129,6 +137,7 @@ vim.diagnostic.config {
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 local servers = {
+  astro = {},
   cssls = {
     settings = {
       css = {
@@ -271,6 +280,7 @@ vim.lsp.config('vtsls', {
       tsserver = {
         globalPlugins = {
           vue_plugin,
+          astro_plugin,
         },
       },
     },
