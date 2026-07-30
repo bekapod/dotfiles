@@ -50,6 +50,7 @@ BREW_PACKAGES=(
   rtk
   starship
   stow
+  swi-prolog
   tmux
   tmuxinator
   tree-sitter-cli
