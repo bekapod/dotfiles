@@ -52,6 +52,10 @@ vim.filetype.add {
   pattern = {
     ['.*%.blade%.php'] = 'blade',
   },
+  extension = {
+    rgbasm = 'rgbasm',
+    rgbinc = 'rgbasm',
+  },
 }
 
 -- [[ Basic Autocommands ]]
