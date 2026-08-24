@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+# Set up clangd + clang-format in a GBDK project (run from the project root).
+
+set -e
+
+if [[ -z "${GBDK_HOME}" ]]; then
+  echo "❌ GBDK_HOME is not set" >&2
+  exit 1
+fi
+
+templates="${0:A:h}/../gbdk"
+
+sed "s|\${GBDK_HOME}|${GBDK_HOME}|g" "${templates}/.clangd" > .clangd
+echo "📝 .clangd (GBDK_HOME=${GBDK_HOME})"
+
+if [[ ! -f .clang-format ]]; then
+  cp "${templates}/.clang-format" .
+  echo "📝 .clang-format"
+fi
+
+# .clangd holds a machine-specific path, so keep it out of the repo
+if ! grep -qxF '.clangd' .gitignore 2>/dev/null; then
+  echo '.clangd' >> .gitignore
+  echo "🙈 added .clangd to .gitignore"
+fi

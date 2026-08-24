@@ -3,6 +3,8 @@ vim.loader.enable()
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
+-- treat ambiguous .h headers as C, not C++
+vim.g.c_syntax_for_h = true
 vim.o.number = true
 -- vim.o.relativenumber = true
 vim.o.mouse = 'a'
