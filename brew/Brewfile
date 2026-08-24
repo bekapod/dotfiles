@@ -99,8 +99,6 @@ brew "charmbracelet/tap/crush", trusted: true
 brew "codecrafters-io/tap/codecrafters"
 # A simple terminal UI for docker, written in Go
 brew "jesseduffield/lazydocker/lazydocker", trusted: true
-# mouseless terminal interaction
-brew "morantron/tmux-fingers/tmux-fingers"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun", trusted: true
 # Open source IDE for exploring and testing APIs
