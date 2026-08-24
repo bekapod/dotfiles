@@ -59,6 +59,7 @@ local function attach(buf, language)
   vim.treesitter.start(buf, language)
   vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
   vim.wo[0][0].foldmethod = 'expr'
+  vim.wo[0][0].foldlevel = 99
   if vim.treesitter.query.get(language, 'indents') ~= nil then
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end
