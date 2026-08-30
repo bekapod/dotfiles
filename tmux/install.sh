@@ -10,5 +10,5 @@ if [ -d $tpm_dir ]; then
   git pull origin master
 else
   printf "\n📦 Installing tpm\n"
-  sh -c "$(git clone https://github.com/tmux-plugins/tpm $tpm_dir)"
+  git clone https://github.com/tmux-plugins/tpm $tpm_dir
 fi

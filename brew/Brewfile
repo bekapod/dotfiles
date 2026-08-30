@@ -9,108 +9,58 @@ tap "oven-sh/bun", trusted: true
 brew "ansible"
 # Checks ansible playbooks for practices and behaviour
 brew "ansible-lint"
-# Official Amazon AWS command-line interface
-brew "awscli"
-# Core application library for C
-brew "glib"
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
-# Functional metaprogramming aware language built on Erlang VM
 brew "elixir"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Command-line tools for fly.io services
 brew "flyctl"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GitHub command-line tool
 brew "gh"
-# Distributed revision control system
 brew "git"
-# Statically typed language for the Erlang VM
 brew "gleam"
-# Render markdown on the CLI
 brew "glow"
-# Open source programming language to build simple/reliable/efficient software
 brew "go"
 # General purpose AT Protocol CLI in Go
 brew "goat"
 # Fast linters runner for Go
 brew "golangci-lint"
-# Lightweight and flexible command-line JSON processor
 brew "jq"
-# Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
-# Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
-# Kubernetes command-line interface
 brew "kubernetes-cli"
-# Simple terminal UI for git commands
 brew "lazygit"
 # Like sed, awk, cut, join & sort for name-indexed data such as CSV
 brew "miller"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
-# MongoDB Shell to connect, configure, query, and work with your MongoDB database
 brew "mongosh"
-# Incremental parsing library
-brew "tree-sitter"
-# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Fast, disk space efficient package manager
-brew "pnpm"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-# Object-relational database system
-brew "postgresql@14", restart_service: :changed
-# Framework for managing multi-language pre-commit hooks
+brew "postgresql@18", restart_service: :changed
 brew "pre-commit"
-# Python version management
-brew "pyenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
-# Rednex GameBoy Development System
 brew "rgbds"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Readline wrapper: adds readline support to tools that lack it
 brew "rlwrap"
-# Cross-shell prompt for astronauts
 brew "starship"
-# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# ISO/Edinburgh-style Prolog interpreter
 brew "swi-prolog"
-# Terminal multiplexer
 brew "tmux"
-# Manage complex tmux sessions easily
 brew "tmuxinator"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Internet file retriever
 brew "wget"
-# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
-# The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
-# A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-brew "charmbracelet/tap/crush", trusted: true
-# CodeCrafters CLI
 brew "codecrafters-io/tap/codecrafters"
-# A simple terminal UI for docker, written in Go
 brew "jesseduffield/lazydocker/lazydocker", trusted: true
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun", trusted: true
-# Open source IDE for exploring and testing APIs
+cask "1password-cli"
 cask "bruno"
-# Terminal-based AI coding assistant
 cask "claude-code@latest"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
-# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
 go "golang.org/x/tools/cmd/goimports"
 go "github.com/BurntSushi/toml/cmd/tomlv"
-npm "corepack"

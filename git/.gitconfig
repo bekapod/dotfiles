@@ -20,7 +20,7 @@
 	directory = *
 [core]
 	editor = nvim
-	excludesfile = /Users/becky/.gitignore
+	excludesfile = ~/.gitignore
 [credential "https://github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential

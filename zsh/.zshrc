@@ -70,9 +70,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws)
-
-SHOW_AWS_PROMPT=false
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,26 +102,23 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:$(go env GOPATH)/bin
 export EDITOR='nvim'
-export TTAB_CMD_DELAY=3
 
 eval "$(starship init zsh)"
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PATH="$PYENV_ROOT/shims:$PATH"
-
-export PNPM_HOME="/Users/becky/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+. "$HOME/.cargo/env"
+
 export GBDK_HOME="$HOME/gbdk"
 export PATH="$PATH:$GBDK_HOME/bin:$HOME/dotfiles/bin"
+
+# uv, claude, and friends
+export PATH="$HOME/.local/bin:$PATH"
+
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 alias tx=tmuxinator
 
@@ -133,8 +128,6 @@ if [ -d "$HOME/zsh" ]; then
   done
 fi
 
-export PATH="$PATH:/Users/becky/.local/bin"
-
 source <(fzf --zsh)
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -142,7 +135,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --info=inline-right \
   --ansi \
   --layout=reverse \
-  --border=none
+  --border=none \
   --color=bg+:#2d3f76 \
   --color=bg:#1e2030 \
   --color=border:#589ed7 \
@@ -160,7 +153,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=separator:#ff966c \
   --color=spinner:#ff007c \
 "
-export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
