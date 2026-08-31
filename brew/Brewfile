@@ -32,6 +32,7 @@ brew "k9s"
 brew "kubectx"
 brew "kubernetes-cli"
 brew "lazygit"
+brew "lefthook"
 # Like sed, awk, cut, join & sort for name-indexed data such as CSV
 brew "miller"
 brew "mongosh"
