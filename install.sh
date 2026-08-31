@@ -12,7 +12,7 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install uv
 ./bin/dotfiles install rustup
 
-stow ghostty git k9s oh-my-zsh mongodb nvim starship tmux yazi zsh
+stow ghostty git herdr k9s oh-my-zsh mongodb nvim starship tmux yazi zsh
 echo "🔗 Creating symlinks\n"
 
 ./bin/dotfiles install yazi

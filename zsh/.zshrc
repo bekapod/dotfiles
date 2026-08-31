@@ -158,3 +158,8 @@ export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 export LG_CONFIG_FILE="$HOME/dotfiles/lazygit/themes/rose-pine-moon.yml"
+
+# >>> oh-my-opencode-slim background subagents >>>
+export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
+export OPENCODE_ENABLE_EXA=1
+# <<< oh-my-opencode-slim background subagents <<<

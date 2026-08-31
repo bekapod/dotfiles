@@ -1,0 +1,112 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# herdr-mux: open a tmuxinator project definition as a herdr workspace.
+#
+# Reads ~/.config/tmuxinator/<project>.yml (name, root, windows) and builds
+# the equivalent herdr workspace: one tab per tmuxinator window, splitting
+# panes and running each pane's command. If a workspace with the project's
+# name already exists, it is focused instead of duplicated (herdr workspaces
+# persist, so a project only needs building once per server lifetime).
+#
+# Usage: herdr-mux <project> [--session NAME]
+
+require "yaml"
+require "json"
+
+name = nil
+session = nil
+args = ARGV.dup
+while (arg = args.shift)
+  case arg
+  when "--session" then session = args.shift
+  when "-h", "--help" then abort "usage: herdr-mux <project> [--session NAME]"
+  else name = arg
+  end
+end
+abort "usage: herdr-mux <project> [--session NAME]" unless name
+
+file = File.expand_path("~/.config/tmuxinator/#{name}.yml")
+abort "herdr-mux: no such project: #{file}" unless File.exist?(file)
+
+config = YAML.load_file(file)
+root = File.expand_path(config["root"] || "~")
+label = (config["name"] || name).to_s
+
+$herdr_base = ["herdr", *(session ? ["--session", session] : [])]
+
+def herdr(*cmd)
+  out = IO.popen([*$herdr_base, *cmd.map(&:to_s)], err: [:child, :out], &:read)
+  abort "herdr-mux: `herdr #{cmd.join(' ')}` failed:\n#{out}" unless $?.success?
+  out.strip.empty? ? nil : JSON.parse(out)
+end
+
+# Focus instead of duplicating if the workspace already exists.
+existing = herdr("workspace", "list").dig("result", "workspaces")
+             .find { |w| w["label"] == label }
+if existing
+  herdr("workspace", "focus", existing["workspace_id"])
+  puts "herdr-mux: focused existing workspace #{label}"
+  exit
+end
+
+# Normalize a tmuxinator window entry into [window_name, [commands...]].
+# Windows look like `- name: command`, `- name:` (no command), or
+# `- name: {layout: ..., panes: [- title: cmd, -, ...]}`.
+def parse_window(entry)
+  window_name, value = entry.first
+  panes =
+    case value
+    when Hash
+      Array(value["panes"]).map do |pane|
+        case pane
+        when Hash then pane.values.first
+        else pane
+        end
+      end
+    else
+      [value]
+    end
+  [window_name.to_s, panes.map { |c| c.is_a?(String) && !c.strip.empty? ? c : nil }]
+end
+
+def run_command(pane_id, command)
+  return unless command
+  herdr("pane", "run", pane_id, command)
+end
+
+created = herdr("workspace", "create", "--cwd", root, "--label", label, "--focus")
+workspace_id = created.dig("result", "workspace", "workspace_id")
+first_tab_id = created.dig("result", "tab", "tab_id")
+first_pane_id = created.dig("result", "root_pane", "pane_id")
+
+windows = Array(config["windows"]).map { |w| parse_window(w) }
+abort "herdr-mux: project has no windows" if windows.empty?
+
+windows.each_with_index do |(window_name, panes), index|
+  if index.zero?
+    tab_id = first_tab_id
+    pane_id = first_pane_id
+    herdr("tab", "rename", tab_id, window_name)
+  else
+    tab = herdr("tab", "create", "--workspace", workspace_id,
+                "--cwd", root, "--label", window_name, "--no-focus")
+    pane_id = tab.dig("result", "root_pane", "pane_id")
+  end
+
+  sleep 0.4 # let the pane's shell reach its prompt before sending commands
+  run_command(pane_id, panes[0])
+
+  panes.drop(1).each_with_index do |command, extra|
+    # First extra pane splits right (side-by-side, like main-vertical),
+    # further panes stack downward in the new column.
+    direction = extra.zero? ? "right" : "down"
+    split = herdr("pane", "split", pane_id, "--direction", direction,
+                  "--cwd", root, "--no-focus")
+    pane_id = split.dig("result", "pane", "pane_id")
+    sleep 0.4
+    run_command(pane_id, command)
+  end
+end
+
+puts "herdr-mux: built workspace #{label} (#{windows.size} tabs)"

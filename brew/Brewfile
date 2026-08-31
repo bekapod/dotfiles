@@ -26,6 +26,7 @@ brew "go"
 brew "goat"
 # Fast linters runner for Go
 brew "golangci-lint"
+brew "herdr"
 brew "jq"
 brew "k9s"
 brew "kubectx"

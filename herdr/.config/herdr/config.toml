@@ -1,0 +1,20 @@
+[theme]
+name = "rose-pine"
+
+[keys]
+prefix = "ctrl+space"
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+width = "90%"
+height = "90%"
+
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+status_indicators = "symbols"
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "spaces"

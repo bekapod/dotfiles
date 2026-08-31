@@ -2,11 +2,6 @@ name: dotfiles
 root: ~/dotfiles
 startup_window: editor
 windows:
-  - editor:
-      layout: main-vertical
-      panes:
-        - nvim .
-  - git: lazygit
-  - claude: claude
+  - editor: nvim .
   - ai: opencode
   - prompt:
