@@ -39,6 +39,8 @@ brew "mongosh"
 brew "neovim"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Full-system emulator (used by Pi Gondolin for micro-VM sandboxing)
+brew "qemu"
 brew "postgresql@18", restart_service: :changed
 brew "pre-commit"
 brew "rgbds"

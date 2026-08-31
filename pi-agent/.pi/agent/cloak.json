@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "name": "1password-tokens",
+      "pattern": "op://[\\w/-]+",
+      "replacement": "[OP_REF_REDACTED]"
+    },
+    {
+      "name": "api-named-secrets",
+      "pattern": "([\\\"']?[A-Za-z_][A-Za-z0-9_]*_[Aa][Pp][Ii]_[A-Za-z0-9_]*[\\\"']?\\s*[:=]\\s*)(?:[\\\"'][^\\\"']*[\\\"']|[^\\s,}\\]]+)",
+      "replacement": "$1[API_SECRET_REDACTED]"
+    },
+    {
+      "name": "api-keys",
+      "pattern": "(?:sk|pk|key|token|secret)[-_][A-Za-z0-9_-]{20,}",
+      "replacement": "[API_KEY_REDACTED]"
+    },
+    {
+      "name": "jwt-tokens",
+      "pattern": "eyJ[A-Za-z0-9_-]{10,}\\.eyJ[A-Za-z0-9_-]{10,}\\.[A-Za-z0-9_-]+",
+      "replacement": "[JWT_REDACTED]"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Runtime auth tokens - created when you authenticate with providers
+.pi/agent/auth.json
+
+# Session data and runtime artifacts
+.pi/agent/sessions/
+.pi/agent/missions/
+.pi/agent/run-history.jsonl
+
+# Cached model catalog (fetched at runtime)
+.pi/agent/models-store.json
+
+# Installed packages and extensions (managed by pi install / install.sh)
+.pi/agent/npm/
+.pi/agent/git/
+.pi/gondolin/

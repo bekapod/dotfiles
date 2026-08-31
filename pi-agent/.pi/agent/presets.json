@@ -1,0 +1,283 @@
+{
+  "claude": {
+    "orchestrator": {
+      "label": "Orchestrator",
+      "description": "Plan then implement. Full tool access, careful approach.",
+      "provider": "anthropic",
+      "model": "claude-opus-4-6",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-foundational-thinking",
+        "principle-sequence-verifiable-units",
+        "principle-prove-it-works",
+        "principle-laziness-protocol",
+        "tdd"
+      ]
+    },
+    "explorer": {
+      "label": "Explorer",
+      "description": "Fast codebase search and pattern matching. Read-only.",
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5",
+      "thinkingLevel": "low",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "how",
+        "principle-minimize-reader-load",
+        "codebase-design"
+      ]
+    },
+    "oracle": {
+      "label": "Oracle",
+      "description": "Architecture, debugging strategy, and code review.",
+      "provider": "anthropic",
+      "model": "claude-opus-4-6",
+      "thinkingLevel": "high",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "how",
+        "why",
+        "blast-radius",
+        "codebase-design",
+        "domain-modeling",
+        "principle-foundational-thinking",
+        "principle-redesign-from-first-principles",
+        "principle-model-the-domain",
+        "principle-fix-root-causes",
+        "principle-type-system-discipline"
+      ]
+    },
+    "designer": {
+      "label": "Designer",
+      "description": "UI/UX design and visual polish.",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-experience-first",
+        "modern-css",
+        "accessibility",
+        "principle-prove-it-works"
+      ]
+    },
+    "fixer": {
+      "label": "Fixer",
+      "description": "Bounded implementation. Quick targeted fixes.",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-fix-root-causes",
+        "principle-laziness-protocol",
+        "principle-prove-it-works"
+      ]
+    },
+    "librarian": {
+      "label": "Librarian",
+      "description": "Research, documentation, and external knowledge.",
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5",
+      "thinkingLevel": "low",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "research",
+        "why",
+        "domain-modeling",
+        "ubiquitous-language"
+      ]
+    }
+  },
+
+  "openai": {
+    "orchestrator": {
+      "label": "Orchestrator",
+      "description": "Plan then implement. Full tool access, careful approach.",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-terra",
+      "thinkingLevel": "high",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-foundational-thinking",
+        "principle-sequence-verifiable-units",
+        "principle-prove-it-works",
+        "principle-laziness-protocol",
+        "tdd"
+      ]
+    },
+    "explorer": {
+      "label": "Explorer",
+      "description": "Fast codebase search and pattern matching. Read-only.",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "thinkingLevel": "low",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "how",
+        "principle-minimize-reader-load",
+        "codebase-design"
+      ]
+    },
+    "oracle": {
+      "label": "Oracle",
+      "description": "Architecture, debugging strategy, and code review.",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "thinkingLevel": "high",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "how",
+        "why",
+        "blast-radius",
+        "codebase-design",
+        "domain-modeling",
+        "principle-foundational-thinking",
+        "principle-redesign-from-first-principles",
+        "principle-model-the-domain",
+        "principle-fix-root-causes",
+        "principle-type-system-discipline"
+      ]
+    },
+    "designer": {
+      "label": "Designer",
+      "description": "UI/UX design and visual polish.",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-experience-first",
+        "modern-css",
+        "accessibility",
+        "principle-prove-it-works"
+      ]
+    },
+    "fixer": {
+      "label": "Fixer",
+      "description": "Bounded implementation. Quick targeted fixes.",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-fix-root-causes",
+        "principle-laziness-protocol",
+        "principle-prove-it-works"
+      ]
+    },
+    "librarian": {
+      "label": "Librarian",
+      "description": "Research, documentation, and external knowledge.",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "thinkingLevel": "low",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "research",
+        "why",
+        "domain-modeling",
+        "ubiquitous-language"
+      ]
+    }
+  },
+
+  "zen-free": {
+    "orchestrator": {
+      "label": "Orchestrator",
+      "description": "Free-tier implementation via OpenCode Zen.",
+      "provider": "opencode",
+      "model": "nemotron-3-ultra-free",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-sequence-verifiable-units",
+        "principle-prove-it-works",
+        "principle-laziness-protocol",
+        "tdd"
+      ]
+    },
+    "explorer": {
+      "label": "Explorer",
+      "description": "Free-tier exploration. Read-only.",
+      "provider": "opencode",
+      "model": "nemotron-3.5-lightning-free",
+      "thinkingLevel": "low",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "how",
+        "codebase-design"
+      ]
+    },
+    "oracle": {
+      "label": "Oracle",
+      "description": "Free-tier review and architecture.",
+      "provider": "opencode",
+      "model": "big-pickle",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "how",
+        "why",
+        "blast-radius",
+        "principle-fix-root-causes"
+      ]
+    },
+    "designer": {
+      "label": "Designer",
+      "description": "Free-tier UI/UX via mimo.",
+      "provider": "opencode",
+      "model": "mimo-v2.5-free",
+      "thinkingLevel": "medium",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-experience-first",
+        "modern-css",
+        "accessibility"
+      ]
+    },
+    "fixer": {
+      "label": "Fixer",
+      "description": "Free-tier quick fixes.",
+      "provider": "opencode",
+      "model": "nemotron-3.5-lightning-free",
+      "thinkingLevel": "low",
+      "tools": ["read", "bash", "edit", "write"],
+      "permissions": "ask",
+      "skills": [
+        "principle-fix-root-causes",
+        "principle-laziness-protocol"
+      ]
+    },
+    "librarian": {
+      "label": "Librarian",
+      "description": "Free-tier research and docs.",
+      "provider": "opencode",
+      "model": "nemotron-3.5-lightning-free",
+      "thinkingLevel": "low",
+      "tools": ["read", "bash"],
+      "permissions": "safe",
+      "skills": [
+        "research",
+        "why"
+      ]
+    }
+  }
+}
