@@ -1,3 +1,4 @@
+onboarding = false
 [theme]
 name = "rose-pine"
 
@@ -7,7 +8,7 @@ prefix = "ctrl+space"
 [[keys.command]]
 key = "prefix+alt+g"
 type = "popup"
-command = "lazygit"
+command = "zsh -i -c lazygit"
 width = "90%"
 height = "90%"
 
