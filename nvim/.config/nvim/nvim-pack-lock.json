@@ -38,7 +38,7 @@
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "9d28935aa95fa6c1dc7c4d6747f101a72a8a4bec",
+      "rev": "40276c4df7e6bdce6801d6c035c6227f9115a855",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "8d86a057fa14681cf7cab74ea7cba894a0abe14f",
+      "rev": "a311ed247d527db9592bb434356badc705363746",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neotest": {
@@ -94,11 +94,11 @@
       "src": "https://github.com/rcarriga/nvim-dap-ui"
     },
     "nvim-lint": {
-      "rev": "0370fe965697aa8f04252a1562441bdc13723cd1",
+      "rev": "3d55c8f67c6ae5c15e1042571e107c7a3d5c5f4e",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "af9adce488c75ca0a81017945c2b7fa7b461bc23",
+      "rev": "16286347bdba1333c7d124d9de9fe6630731b2b2",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -106,7 +106,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "8b98b4470eb326f1c7b50dae79f8c963568e5720",
+      "rev": "427e9222363d07c32d6db6169e4049c28d58d141",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
