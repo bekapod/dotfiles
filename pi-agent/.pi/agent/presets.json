@@ -6,7 +6,6 @@
       "provider": "anthropic",
       "model": "claude-opus-4-6",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-foundational-thinking",
@@ -22,7 +21,7 @@
       "provider": "anthropic",
       "model": "claude-haiku-4-5",
       "thinkingLevel": "low",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "how",
@@ -36,7 +35,7 @@
       "provider": "anthropic",
       "model": "claude-opus-4-6",
       "thinkingLevel": "high",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "how",
@@ -57,7 +56,6 @@
       "provider": "anthropic",
       "model": "claude-sonnet-4-6",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-experience-first",
@@ -72,7 +70,6 @@
       "provider": "anthropic",
       "model": "claude-sonnet-4-6",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-fix-root-causes",
@@ -86,7 +83,7 @@
       "provider": "anthropic",
       "model": "claude-haiku-4-5",
       "thinkingLevel": "low",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "research",
@@ -104,7 +101,6 @@
       "provider": "openai-codex",
       "model": "gpt-5.6-terra",
       "thinkingLevel": "high",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-foundational-thinking",
@@ -120,7 +116,7 @@
       "provider": "openai-codex",
       "model": "gpt-5.6-luna",
       "thinkingLevel": "low",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "how",
@@ -134,7 +130,7 @@
       "provider": "openai-codex",
       "model": "gpt-5.6-sol",
       "thinkingLevel": "high",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "how",
@@ -155,7 +151,6 @@
       "provider": "openai-codex",
       "model": "gpt-5.6-luna",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-experience-first",
@@ -170,7 +165,6 @@
       "provider": "openai-codex",
       "model": "gpt-5.6-luna",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-fix-root-causes",
@@ -184,7 +178,7 @@
       "provider": "openai-codex",
       "model": "gpt-5.6-luna",
       "thinkingLevel": "low",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "research",
@@ -202,7 +196,6 @@
       "provider": "opencode",
       "model": "nemotron-3-ultra-free",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-sequence-verifiable-units",
@@ -217,7 +210,7 @@
       "provider": "opencode",
       "model": "nemotron-3.5-lightning-free",
       "thinkingLevel": "low",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "how",
@@ -230,7 +223,7 @@
       "provider": "opencode",
       "model": "big-pickle",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "how",
@@ -245,7 +238,6 @@
       "provider": "opencode",
       "model": "mimo-v2.5-free",
       "thinkingLevel": "medium",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-experience-first",
@@ -259,7 +251,6 @@
       "provider": "opencode",
       "model": "nemotron-3.5-lightning-free",
       "thinkingLevel": "low",
-      "tools": ["read", "bash", "edit", "write"],
       "permissions": "ask",
       "skills": [
         "principle-fix-root-causes",
@@ -272,7 +263,7 @@
       "provider": "opencode",
       "model": "nemotron-3.5-lightning-free",
       "thinkingLevel": "low",
-      "tools": ["read", "bash"],
+      "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
       "permissions": "safe",
       "skills": [
         "research",
