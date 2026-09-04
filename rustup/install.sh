@@ -13,3 +13,4 @@ fi
 
 printf "\n📦 Installing rust-analyzer component\n"
 rustup component add rust-analyzer
+rustup component add llvm-tools-preview
