@@ -296,6 +296,26 @@ export default function (pi: ExtensionAPI) {
 		}
 	}
 
+	async function restoreSavedPreset(ctx: ExtensionContext): Promise<void> {
+		if (active) return;
+
+		const saved = ctx.sessionManager.getEntries()
+			.filter(
+				(e: { type: string; customType?: string }) =>
+					e.type === "custom" && e.customType === "preset-state",
+			)
+			.pop() as { data?: { path?: string; originalState?: OriginalState } } | undefined;
+
+		if (!saved?.data?.path) return;
+
+		const resolved = resolve(saved.data.path);
+		if (!resolved) return;
+
+		originalState = saved.data.originalState;
+		originalTools = getPolicySnapshot().baseTools;
+		await applyPreset(resolved.collection, resolved.role, resolved.def, ctx);
+	}
+
 	// ── pickers ───────────────────────────────────────
 
 	async function pickFromList<T extends string>(
@@ -479,7 +499,9 @@ export default function (pi: ExtensionAPI) {
 
 	// ── system prompt injection ─────────────────────
 
-	pi.on("before_agent_start", async (event) => {
+	pi.on("before_agent_start", async (event, ctx) => {
+		await restoreSavedPreset(ctx);
+
 		const parts: string[] = [];
 
 		if (active) {
@@ -526,22 +548,7 @@ export default function (pi: ExtensionAPI) {
 			}
 		}
 
-		if (!flag) {
-			const entries = ctx.sessionManager.getEntries();
-			const saved = entries
-				.filter((e: { type: string; customType?: string }) =>
-					e.type === "custom" && e.customType === "preset-state")
-				.pop() as { data?: { path?: string; originalState?: OriginalState } } | undefined;
-
-			if (saved?.data?.path) {
-				const resolved = resolve(saved.data.path);
-				if (resolved) {
-					originalState = saved.data.originalState;
-					originalTools = getPolicySnapshot().baseTools;
-					await applyPreset(resolved.collection, resolved.role, resolved.def, ctx);
-				}
-			}
-		}
+		if (!flag) await restoreSavedPreset(ctx);
 
 		updateStatus(ctx);
 	});

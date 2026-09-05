@@ -110,6 +110,12 @@ export default function (pi: ExtensionAPI) {
 			const llmMessages = convertToLlm(messages);
 			const conversationText = serializeConversation(llmMessages);
 			const parentSession = ctx.sessionManager.getSessionFile();
+			const presetState = ctx.sessionManager.getBranch()
+				.filter(
+					(e: { type: string; customType?: string }) =>
+						e.type === "custom" && e.customType === "preset-state",
+				)
+				.pop() as { data?: { path?: string; originalState?: unknown } } | undefined;
 
 			// generate the handoff prompt
 			const generated = await ctx.ui.custom<string | null>(
@@ -162,6 +168,11 @@ export default function (pi: ExtensionAPI) {
 
 			const result = await ctx.newSession({
 				parentSession: parentSession,
+				setup: async (sessionManager) => {
+					if (presetState?.data?.path) {
+						sessionManager.appendCustomEntry("preset-state", presetState.data);
+					}
+				},
 				withSession: async (newCtx) => {
 					newCtx.ui.setEditorText(edited);
 					newCtx.ui.notify("Handoff ready — review and submit", "info");
