@@ -22,7 +22,7 @@
       "model": "claude-haiku-4-5",
       "thinkingLevel": "low",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "how",
         "principle-minimize-reader-load",
@@ -36,7 +36,7 @@
       "model": "claude-opus-4-6",
       "thinkingLevel": "high",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "how",
         "why",
@@ -84,7 +84,7 @@
       "model": "claude-haiku-4-5",
       "thinkingLevel": "low",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "research",
         "why",
@@ -117,7 +117,7 @@
       "model": "gpt-5.6-luna",
       "thinkingLevel": "low",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "how",
         "principle-minimize-reader-load",
@@ -131,7 +131,7 @@
       "model": "gpt-5.6-sol",
       "thinkingLevel": "high",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "how",
         "why",
@@ -179,7 +179,7 @@
       "model": "gpt-5.6-luna",
       "thinkingLevel": "low",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "research",
         "why",
@@ -211,7 +211,7 @@
       "model": "nemotron-3.5-lightning-free",
       "thinkingLevel": "low",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "how",
         "codebase-design"
@@ -224,7 +224,7 @@
       "model": "big-pickle",
       "thinkingLevel": "medium",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "how",
         "why",
@@ -264,7 +264,7 @@
       "model": "nemotron-3.5-lightning-free",
       "thinkingLevel": "low",
       "tools": ["read", "bash", "grep", "find", "ls", "linear_api"],
-      "permissions": "safe",
+      "permissions": "ask",
       "skills": [
         "research",
         "why"
