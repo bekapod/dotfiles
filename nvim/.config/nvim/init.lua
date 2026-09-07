@@ -49,6 +49,17 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
+-- Annotate visual selection in Herdr Annotate (hands selection over via file)
+vim.keymap.set('x', '<leader>a', function()
+  vim.cmd('normal! "zy')
+  local base = os.getenv('XDG_RUNTIME_DIR')
+  if not base or base == '' then base = vim.fn.fnamemodify(vim.fn.tempname(), ':h') end
+  local dir = base .. '/herdr-annotate-' .. vim.loop.getuid()
+  vim.fn.mkdir(dir, 'p', '0700')
+  vim.fn.writefile(vim.split(vim.fn.getreg('z'), '\n'), dir .. '/selection')
+  vim.fn.jobstart({ 'herdr', 'plugin', 'action', 'invoke', 'annotate.capture' })
+end, { desc = 'Annotate in Herdr' })
+
 -- [[ Filetypes ]]
 vim.filetype.add {
   pattern = {

@@ -1,0 +1,4 @@
+# herdr-managed plugin installs — reproduced via `herdr plugin install`
+# in plannotator/install.sh, so they don't belong in version control.
+plugins/
+plugins.json

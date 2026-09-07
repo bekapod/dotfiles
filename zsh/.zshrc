@@ -160,6 +160,10 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 export LG_CONFIG_FILE="$HOME/dotfiles/lazygit/themes/rose-pine-moon.yml"
 
+# Plannotator — locked down: no sharing, no in-UI AI
+export PLANNOTATOR_SHARE=disabled
+export PLANNOTATOR_AI=disabled
+
 # >>> oh-my-opencode-slim background subagents >>>
 export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
 export OPENCODE_ENABLE_EXA=1

@@ -13,10 +13,11 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install uv
 ./bin/dotfiles install rustup
 
-stow agents ghostty git herdr k9s oh-my-zsh mongodb nvim pi-agent starship tmux yazi zsh
+stow agents ghostty git herdr k9s oh-my-zsh mongodb nvim pi-agent plannotator starship tmux yazi zsh
 echo "🔗 Creating symlinks\n"
 
 ./bin/dotfiles install pi-agent
+./bin/dotfiles install plannotator
 ./bin/dotfiles install yazi
 
 echo "👷‍♀️ Manual installation/updates"

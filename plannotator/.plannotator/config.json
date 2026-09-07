@@ -1,0 +1,15 @@
+{
+  "reviewAnalysis": {
+    "semanticDiff": true,
+    "callFlow": true
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "plannotator",
+    "dark": "laserwave"
+  },
+  "conventionalComments": true,
+  "diffOptions": {
+    "fontFamily": "MonoLisa Variable"
+  }
+}

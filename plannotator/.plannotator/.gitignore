@@ -1,0 +1,4 @@
+# ~/.plannotator is stow-managed, but only config.json is tracked.
+/*
+!/.gitignore
+!/config.json
