@@ -1,6 +1,5 @@
 name: garden
 root: ~/garden
 windows:
-  - claude: claude
-  - ai: opencode
+  - ai: pi
   - prompt:
