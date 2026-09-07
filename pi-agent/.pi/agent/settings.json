@@ -11,7 +11,8 @@
     "grep",
     "find",
     "ls",
-    "linear_api"
+    "linear_api",
+    "web_fetch"
   ],
   "lastChangelogVersion": "0.85.1",
   "theme": "rose-pine-moon"

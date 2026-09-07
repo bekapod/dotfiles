@@ -134,12 +134,13 @@ export default function (pi: ExtensionAPI) {
 			return;
 		}
 
-		// ── ask: confirm writes and every shell command ──
+		// ── ask: confirm writes, shell commands, and web fetches ──
 		if (profile === "ask") {
 			const requiresConfirmation =
 				event.toolName === "write" ||
 				event.toolName === "edit" ||
-				event.toolName === "bash";
+				event.toolName === "bash" ||
+				event.toolName === "web_fetch";
 			if (!requiresConfirmation) return;
 			if (!ctx.hasUI) {
 				return { block: true, reason: "No UI to confirm (ask profile)" };
@@ -147,7 +148,9 @@ export default function (pi: ExtensionAPI) {
 
 			const detail = event.toolName === "bash"
 				? (event.input as { command: string }).command
-				: (event.input as { path: string }).path;
+				: event.toolName === "web_fetch"
+					? (event.input as { url: string }).url
+					: (event.input as { path: string }).path;
 			const ok = await ctx.ui.confirm(`Allow ${event.toolName}?`, detail);
 			if (!ok) return { block: true, reason: "Denied by user" };
 			return;
