@@ -1,0 +1,16 @@
+FROM --platform=linux/arm64 debian:bookworm-slim
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends make git gcc libc6-dev ca-certificates python3 python3-pip lazarus \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 --branch v1.0.11 --recurse-submodules https://github.com/SuperDisk/hUGETracker.git /tmp/hUGETracker \
+  && sed -i 's/, Dialogs, strutils/, strutils/; s/, FileUtil, LazFileUtils/, LazFileUtils/' /tmp/hUGETracker/src/codegen.pas \
+  && lazbuild /tmp/hUGETracker/src/uge2source/uge2source.lpi --build-mode=Release \
+  && install -Dm755 /tmp/hUGETracker/src/uge2source/Release/uge2source /opt/gameboy-tools/uge2source \
+  && rm -rf /tmp/hUGETracker
+
+RUN pip3 install --no-cache-dir --break-system-packages uv \
+  && uv python install --install-dir /opt/uv-python 3.14 \
+  && uv venv --python /opt/uv-python/cpython-3.14-linux-aarch64-gnu/bin/python3.14 /opt/gondolin-venv \
+  && uv pip install --python /opt/gondolin-venv/bin/python pyboy pytest

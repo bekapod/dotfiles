@@ -38,6 +38,8 @@ brew "mongosh"
 brew "neovim"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Filesystem image tools required to build the Gondolin GBDK guest
+brew "e2fsprogs"
 # Full-system emulator (used by Pi Gondolin for micro-VM sandboxing)
 brew "qemu"
 brew "postgresql@18", restart_service: :changed
