@@ -1,14 +1,11 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
-export type PermissionProfile = "safe" | "ask" | "yolo";
-
-export const READ_ONLY_TOOL_NAMES = new Set(["read", "grep", "find", "ls"]);
+export type PermissionProfile = "ask" | "yolo";
 
 export interface ToolPolicyUpdate {
 	baseTools?: string[];
 	presetTools?: string[] | null;
 	permissionProfile?: PermissionProfile;
-	planMode?: boolean;
 }
 
 export interface ToolPolicySnapshot {
@@ -19,8 +16,7 @@ export interface ToolPolicySnapshot {
 class ToolPolicy {
 	private baseTools: string[] | undefined;
 	private presetTools: string[] | undefined;
-	private permissionProfile: PermissionProfile = "safe";
-	private planMode = false;
+	private permissionProfile: PermissionProfile = "ask";
 
 	constructor(private readonly pi: ExtensionAPI) {}
 
@@ -33,7 +29,6 @@ class ToolPolicy {
 		if (update.permissionProfile) {
 			this.permissionProfile = update.permissionProfile;
 		}
-		if (update.planMode !== undefined) this.planMode = update.planMode;
 		this.apply();
 	}
 
@@ -53,10 +48,7 @@ class ToolPolicy {
 		const baseToolNames = new Set(baseTools);
 		const requested = (this.presetTools ?? baseTools)
 			.filter((name) => baseToolNames.has(name));
-		const effective = this.planMode || this.permissionProfile === "safe"
-			? baseTools.filter((name) => READ_ONLY_TOOL_NAMES.has(name))
-			: requested;
-		this.pi.setActiveTools([...new Set(effective)]);
+		this.pi.setActiveTools([...new Set(requested)]);
 	}
 }
 

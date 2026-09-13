@@ -1,14 +1,12 @@
 /**
  * Permission Profiles Extension
  *
- * Three profiles that control what the agent can do:
+ * Two profiles that control what the agent can do:
  *
- *   safe  — structured read-only tools only
  *   ask   — confirm before writes, edits, and shell commands
  *   yolo  — allow everything
  *
  * /permissions           — show current profile
- * /permissions safe      — switch to safe
  * /permissions ask       — switch to ask
  * /permissions yolo      — switch to yolo
  *
@@ -22,11 +20,10 @@ import { join } from "node:path";
 import {
 	getToolPolicy,
 	type PermissionProfile,
-	READ_ONLY_TOOL_NAMES,
 	type ToolPolicyUpdate,
 } from "./shared/tool-policy.ts";
 
-const PROFILES: PermissionProfile[] = ["safe", "ask", "yolo"];
+const PROFILES: PermissionProfile[] = ["ask", "yolo"];
 
 interface ProjectConfig {
 	profile?: PermissionProfile;
@@ -53,8 +50,7 @@ export default function (pi: ExtensionAPI) {
 			ctx.ui.setStatus("permissions", undefined);
 			return;
 		}
-		const color = profile === "safe" ? "warning" : "accent";
-		ctx.ui.setStatus("permissions", ctx.ui.theme.fg(color, profile));
+		ctx.ui.setStatus("permissions", ctx.ui.theme.fg("accent", profile));
 	}
 
 	function setProfile(nextProfile: PermissionProfile, ctx: ExtensionContext, notify = true) {
@@ -90,7 +86,7 @@ export default function (pi: ExtensionAPI) {
 	// ── command ──────────────────────────────────────────────
 
 	pi.registerCommand("permissions", {
-		description: "Show or set permission profile (safe / ask / yolo)",
+		description: "Show or set permission profile (ask / yolo)",
 		handler: async (args, ctx) => {
 			const sub = args.trim().toLowerCase() as PermissionProfile;
 
@@ -104,7 +100,7 @@ export default function (pi: ExtensionAPI) {
 				return;
 			}
 
-			ctx.ui.notify(`Unknown profile "${args.trim()}". Use: safe, ask, yolo`, "error");
+			ctx.ui.notify(`Unknown profile "${args.trim()}". Use: ask, yolo`, "error");
 		},
 	});
 
@@ -121,17 +117,6 @@ export default function (pi: ExtensionAPI) {
 			if (protectedPaths.some((p) => path.includes(p))) {
 				return { block: true, reason: `Protected path: ${path}` };
 			}
-		}
-
-		// ── safe: allow only structured read-only tools ──
-		if (profile === "safe") {
-			if (!READ_ONLY_TOOL_NAMES.has(event.toolName)) {
-				return {
-					block: true,
-					reason: "Blocked by safe profile. Only read, grep, find, and ls are allowed.",
-				};
-			}
-			return;
 		}
 
 		// ── ask: confirm writes, shell commands, and web fetches ──
@@ -163,11 +148,6 @@ export default function (pi: ExtensionAPI) {
 
 	pi.on("before_agent_start", async (event) => {
 		const profile = toolPolicy.getPermissionProfile();
-		if (profile === "safe") {
-			return {
-				systemPrompt: `${event.systemPrompt}\n\n[PERMISSIONS: safe] Only the structured read, grep, find, and ls tools are available.`,
-			};
-		}
 		if (profile === "ask") {
 			return {
 				systemPrompt: `${event.systemPrompt}\n\n[PERMISSIONS: ask] Writes and all shell commands require user confirmation.`,

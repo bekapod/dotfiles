@@ -48,7 +48,6 @@ const ThinkingLevelSchema = Type.Union([
 	Type.Literal("max"),
 ]);
 const PermissionProfileSchema = Type.Union([
-	Type.Literal("safe"),
 	Type.Literal("ask"),
 	Type.Literal("yolo"),
 ]);
@@ -168,7 +167,7 @@ export default function (pi: ExtensionAPI) {
 		});
 		return snapshot ?? {
 			baseTools: pi.getActiveTools(),
-			permissionProfile: "safe",
+			permissionProfile: "ask",
 		};
 	}
 
