@@ -17,11 +17,7 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import {
-	getToolPolicy,
-	type PermissionProfile,
-	type ToolPolicyUpdate,
-} from "./shared/tool-policy.ts";
+type PermissionProfile = "ask" | "yolo";
 
 const PROFILES: PermissionProfile[] = ["ask", "yolo"];
 
@@ -41,11 +37,10 @@ function loadProjectConfig(cwd: string): ProjectConfig {
 }
 
 export default function (pi: ExtensionAPI) {
-	const toolPolicy = getToolPolicy(pi);
+	let profile: PermissionProfile = "ask";
 	let protectedPaths: string[] = [".env"];
 
 	function updateStatus(ctx: ExtensionContext) {
-		const profile = toolPolicy.getPermissionProfile();
 		if (profile === "yolo") {
 			ctx.ui.setStatus("permissions", undefined);
 			return;
@@ -54,34 +49,11 @@ export default function (pi: ExtensionAPI) {
 	}
 
 	function setProfile(nextProfile: PermissionProfile, ctx: ExtensionContext, notify = true) {
-		toolPolicy.update({ permissionProfile: nextProfile });
+		profile = nextProfile;
 		updateStatus(ctx);
 		pi.appendEntry("permissions-profile", { profile: nextProfile });
 		if (notify) ctx.ui.notify(`Permissions: ${nextProfile}`, "info");
 	}
-
-	pi.events.on("dotfiles:tool-policy:update", (data: unknown) => {
-		const request = data as {
-			update: ToolPolicyUpdate;
-			ctx?: ExtensionContext;
-			notify?: boolean;
-		};
-		toolPolicy.update(request.update);
-		if (request.update.permissionProfile && request.ctx) {
-			updateStatus(request.ctx);
-			pi.appendEntry("permissions-profile", {
-				profile: request.update.permissionProfile,
-			});
-			if (request.notify) {
-				request.ctx.ui.notify(`Permissions: ${request.update.permissionProfile}`, "info");
-			}
-		}
-	});
-
-	pi.events.on("dotfiles:tool-policy:snapshot", (data: unknown) => {
-		const respond = data as (snapshot: ReturnType<typeof toolPolicy.snapshot>) => void;
-		respond(toolPolicy.snapshot());
-	});
 
 	// ── command ──────────────────────────────────────────────
 
@@ -91,7 +63,7 @@ export default function (pi: ExtensionAPI) {
 			const sub = args.trim().toLowerCase() as PermissionProfile;
 
 			if (!sub) {
-				ctx.ui.notify(`Current profile: ${toolPolicy.getPermissionProfile()}`, "info");
+				ctx.ui.notify(`Current profile: ${profile}`, "info");
 				return;
 			}
 
@@ -107,7 +79,6 @@ export default function (pi: ExtensionAPI) {
 	// ── tool gating ─────────────────────────────────────────
 
 	pi.on("tool_call", async (event, ctx) => {
-		const profile = toolPolicy.getPermissionProfile();
 		// protected paths block structured file mutations outside yolo
 		if (
 			profile !== "yolo" &&
@@ -147,7 +118,6 @@ export default function (pi: ExtensionAPI) {
 	// ── system prompt hint ──────────────────────────────────
 
 	pi.on("before_agent_start", async (event) => {
-		const profile = toolPolicy.getPermissionProfile();
 		if (profile === "ask") {
 			return {
 				systemPrompt: `${event.systemPrompt}\n\n[PERMISSIONS: ask] Writes and all shell commands require user confirmation.`,
@@ -163,9 +133,9 @@ export default function (pi: ExtensionAPI) {
 		if (projectConfig.protectedPaths) {
 			protectedPaths = [...new Set([...protectedPaths, ...projectConfig.protectedPaths])];
 		}
-		let profile = projectConfig.profile && PROFILES.includes(projectConfig.profile)
+		profile = projectConfig.profile && PROFILES.includes(projectConfig.profile)
 			? projectConfig.profile
-			: toolPolicy.getPermissionProfile();
+			: profile;
 
 		// restore saved profile from session
 		const entries = ctx.sessionManager.getEntries();
@@ -180,7 +150,6 @@ export default function (pi: ExtensionAPI) {
 			profile = saved.data.profile;
 		}
 
-		toolPolicy.update({ permissionProfile: profile });
 		updateStatus(ctx);
 	});
 }
