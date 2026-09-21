@@ -35,6 +35,7 @@ brew "lefthook"
 # Like sed, awk, cut, join & sort for name-indexed data such as CSV
 brew "miller"
 brew "mongosh"
+brew "mosquitto"
 brew "neovim"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
