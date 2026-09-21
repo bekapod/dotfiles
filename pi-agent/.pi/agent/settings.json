@@ -14,7 +14,10 @@
     "linear_api",
     "web_fetch"
   ],
-  "packages": ["npm:@plannotator/pi-extension"],
-  "lastChangelogVersion": "0.85.1",
+  "packages": [
+    "npm:@plannotator/pi-extension",
+    "npm:pi-mcp-adapter"
+  ],
+  "lastChangelogVersion": "0.86.1",
   "theme": "rose-pine-moon"
 }
