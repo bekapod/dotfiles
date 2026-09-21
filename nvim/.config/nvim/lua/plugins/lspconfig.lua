@@ -148,6 +148,29 @@ local servers = {
       },
     },
   },
+  tailwindcss = {
+    filetypes = {
+      'astro',
+      'css',
+      'elixir',
+      'heex',
+      'html',
+      'javascript',
+      'javascriptreact',
+      'svelte',
+      'typescript',
+      'typescriptreact',
+      'vue',
+    },
+    settings = {
+      tailwindCSS = {
+        includeLanguages = {
+          elixir = 'html',
+          heex = 'html',
+        },
+      },
+    },
+  },
   elixirls = {},
   intelephense = {},
   golangci_lint_ls = {},
