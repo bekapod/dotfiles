@@ -17,7 +17,7 @@
     "npm:@plannotator/pi-extension",
     "npm:pi-mcp-adapter"
   ],
-  "lastChangelogVersion": "0.86.1",
+  "lastChangelogVersion": "0.87.1",
   "theme": "rose-pine-moon",
   "terminal": {
     "showTerminalProgress": true
