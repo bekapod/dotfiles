@@ -1,6 +1,6 @@
 {
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-terra",
+  "defaultModel": "gpt-5.6-luna",
   "defaultThinkingLevel": "medium",
   "tuiMode": "fullscreen",
   "defaultTools": [
@@ -18,5 +18,15 @@
     "npm:pi-mcp-adapter"
   ],
   "lastChangelogVersion": "0.86.1",
-  "theme": "rose-pine-moon"
+  "theme": "rose-pine-moon",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "steeringMode": "all",
+  "followUpMode": "all",
+  "transport": "auto",
+  "enableInstallTelemetry": false,
+  "modelThinkingLevels": {
+    "openrouter/deepseek/deepseek-v4.1-flash": "low"
+  }
 }
