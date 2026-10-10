@@ -28,5 +28,8 @@
   "enableInstallTelemetry": false,
   "modelThinkingLevels": {
     "openrouter/deepseek/deepseek-v4.1-flash": "low"
-  }
+  },
+  "extensions": [
+    "-builtin:mcp"
+  ]
 }
