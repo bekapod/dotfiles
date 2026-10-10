@@ -12,6 +12,7 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install volta
 ./bin/dotfiles install uv
 ./bin/dotfiles install rustup
+./bin/dotfiles install doom
 
 stow agents ghostty git herdr k9s oh-my-zsh mongodb nvim pi-agent plannotator starship tmux yazi zsh
 echo "🔗 Creating symlinks\n"

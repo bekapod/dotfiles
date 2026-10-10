@@ -1,3 +1,5 @@
+typeset -U PATH path
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -162,3 +164,6 @@ export LG_CONFIG_FILE="$HOME/dotfiles/lazygit/themes/catppuccin.yml"
 # Plannotator — locked down: no sharing, no in-UI AI
 export PLANNOTATOR_SHARE=disabled
 export PLANNOTATOR_AI=disabled
+
+export PATH="$HOME/.config/emacs/bin:$PATH"
+alias e='emacsclient -t'

@@ -4,13 +4,18 @@ tap "codecrafters-io/tap", trusted: true
 tap "jesseduffield/lazydocker", trusted: true
 tap "jesseduffield/lazygit", trusted: true
 tap "oven-sh/bun", trusted: true
+tap "railwaycat/emacsmacport", trusted: true
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Checks ansible playbooks for practices and behaviour
 brew "ansible-lint"
+brew "clang-format"
+brew "coreutils"
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
 brew "elixir"
+brew "elixir-ls"
+brew "emacs-mac"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 brew "flyctl"
@@ -70,3 +75,9 @@ cask "claude-code@latest"
 cask "ghostty"
 go "golang.org/x/tools/cmd/goimports"
 go "github.com/BurntSushi/toml/cmd/tomlv"
+# Autoformat shell script source code
+brew "shfmt"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
