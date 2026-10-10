@@ -34,7 +34,9 @@ vim.opt.expandtab = true
 -- [[ Keymaps ]]
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>u', function() vim.pack.update() end, { desc = '[U]pdate plugins' })
+vim.keymap.set('n', '<leader>u', function()
+  vim.pack.update()
+end, { desc = '[U]pdate plugins' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -51,13 +53,15 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- Annotate visual selection in Herdr Annotate (hands selection over via file)
 vim.keymap.set('x', '<leader>a', function()
-  vim.cmd('normal! "zy')
-  local base = os.getenv('XDG_RUNTIME_DIR')
-  if not base or base == '' then base = vim.fn.fnamemodify(vim.fn.tempname(), ':h') end
+  vim.cmd 'normal! "zy'
+  local base = os.getenv 'XDG_RUNTIME_DIR'
+  if not base or base == '' then
+    base = vim.fn.fnamemodify(vim.fn.tempname(), ':h')
+  end
   local dir = base .. '/herdr-annotate-' .. vim.loop.getuid()
   vim.fn.mkdir(dir, 'p', '0700')
-  vim.fn.writefile(vim.split(vim.fn.getreg('z'), '\n'), dir .. '/selection')
-  vim.fn.jobstart({ 'herdr', 'plugin', 'action', 'invoke', 'annotate.capture' })
+  vim.fn.writefile(vim.split(vim.fn.getreg 'z', '\n'), dir .. '/selection')
+  vim.fn.jobstart { 'herdr', 'plugin', 'action', 'invoke', 'annotate.capture' }
 end, { desc = 'Annotate in Herdr' })
 
 -- [[ Filetypes ]]
@@ -94,7 +98,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
 })
 
 -- [[ Load plugins ]]
-require 'themes.rose-pine'
+require 'themes.catppuccin'
 require 'plugins.mini'
 require 'plugins.blink'
 require 'plugins.lspconfig'

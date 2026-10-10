@@ -130,35 +130,34 @@ fi
 
 source <(fzf --zsh)
 
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:-} \
   --highlight-line \
   --info=inline-right \
   --ansi \
   --layout=reverse \
   --border=none \
-  --color=bg+:#2d3f76 \
-  --color=bg:#1e2030 \
-  --color=border:#589ed7 \
-  --color=fg:#c8d3f5 \
-  --color=gutter:#1e2030 \
-  --color=header:#ff966c \
-  --color=hl+:#65bcff \
-  --color=hl:#65bcff \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#65bcff \
-  --color=query:#c8d3f5:regular \
-  --color=scrollbar:#589ed7 \
-  --color=separator:#ff966c \
-  --color=spinner:#ff007c \
+  --color=bg:#24273a \
+  --color=bg+:#363a4f \
+  --color=fg:#cad3f5 \
+  --color=fg+:#cad3f5 \
+  --color=gutter:#24273a \
+  --color=header:#f5a97f \
+  --color=hl:#8aadf4 \
+  --color=hl+:#eed49f \
+  --color=info:#a5adcb \
+  --color=marker:#a6da95 \
+  --color=pointer:#c6a0f6 \
+  --color=prompt:#8aadf4 \
+  --color=query:#cad3f5:regular \
+  --color=scrollbar:#5b6078 \
+  --color=separator:#494d64 \
+  --color=spinner:#8bd5ca \
 "
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
-export LG_CONFIG_FILE="$HOME/dotfiles/lazygit/themes/rose-pine-moon.yml"
-export ENHANCE_THEME=rose_pine_moon
+export LG_CONFIG_FILE="$HOME/dotfiles/lazygit/themes/catppuccin.yml"
 
 # Plannotator — locked down: no sharing, no in-UI AI
 export PLANNOTATOR_SHARE=disabled

@@ -1,4 +1,4 @@
-palette = "rose-pine"
+palette = "catppuccin"
 command_timeout = 3000
 format = """
 $directory\
@@ -96,12 +96,12 @@ symbol = ""
 style = "fg:red"
 format = '[ $symbol ($version) ]($style)'
 
-[palettes.rose-pine]
-black = '#393552'
-red = '#eb6f92'
-green = '#3e8fb0'
-yellow = '#f6c177'
-blue = '#3e8fb0'
-magenta = '#c4a7e7'
-cyan = '#9ccfd8'
-white = '#e0def4'
+[palettes.catppuccin]
+black = '#363a4f'
+red = '#ed8796'
+green = '#a6da95'
+yellow = '#eed49f'
+blue = '#8aadf4'
+magenta = '#c6a0f6'
+cyan = '#91d7e3'
+white = '#cad3f5'
