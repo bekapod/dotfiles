@@ -1,5 +1,0 @@
-name: garden
-root: ~/garden
-windows:
-  - ai: pi
-  - prompt:

@@ -8,13 +8,12 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install oh-my-zsh
 ./bin/dotfiles install brew
 ./bin/dotfiles install git
-./bin/dotfiles install tmux
 ./bin/dotfiles install volta
 ./bin/dotfiles install uv
 ./bin/dotfiles install rustup
 ./bin/dotfiles install doom
 
-stow agents ghostty git herdr k9s oh-my-zsh mongodb nvim pi-agent plannotator starship tmux yazi zsh
+stow agents ghostty git herdr k9s oh-my-zsh mongodb nvim pi-agent plannotator starship yazi zsh
 echo "🔗 Creating symlinks\n"
 
 ./bin/dotfiles install pi-agent
@@ -23,5 +22,4 @@ echo "🔗 Creating symlinks\n"
 
 echo "👷‍♀️ Manual installation/updates"
 echo "oh-my-zsh      omz update"
-echo "tpm            <ctrl+space>U"
 echo "yazi           ya pkg upgrade"
