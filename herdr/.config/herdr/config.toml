@@ -1,7 +1,8 @@
 onboarding = false
 [theme]
-name = "terminal"
+name = "catppuccin"
 
+auto_switch = false
 [keys]
 prefix = "ctrl+space"
 

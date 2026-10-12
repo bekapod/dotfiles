@@ -4,7 +4,7 @@
     "callFlow": true
   },
   "theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "plannotator",
     "dark": "laserwave"
   },
