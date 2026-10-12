@@ -66,7 +66,6 @@
                  "* %? :idea:\n")
                t))
 
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
 ;; settings. E.g.
@@ -116,3 +115,8 @@
                      (car (process-lines "xcrun" "--find" "lldb-dap")))))
       (when (and adapter (file-executable-p adapter))
         (add-to-list 'exec-path (file-name-directory adapter))))))
+
+(after! editorconfig
+  (setq editorconfig-get-properties-function
+        #'editorconfig-core-get-properties-hash))
+

@@ -166,8 +166,50 @@ export PLANNOTATOR_SHARE=disabled
 export PLANNOTATOR_AI=disabled
 
 export PATH="$HOME/.config/emacs/bin:$PATH"
-alias e='emacsclient -t'
+e() {
+    if [[ -n "$HERDR_PANE_ID" && -z "$TMUX" && -z "$STY" ]]; then
+        TERM=xterm-emacs command emacsclient -t "$@"
+    else
+        command emacsclient -t "$@"
+    fi
+}
 # >>> oh-my-opencode-slim background subagents >>>
 export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
 export OPENCODE_ENABLE_EXA=1
 # <<< oh-my-opencode-slim background subagents <<<
+
+# ─────────────────────────────────────────────
+# Doom Emacs Daemon
+# ─────────────────────────────────────────────
+
+export EMACS_LAUNCH_LABEL="com.user.emacs-daemon"
+export EMACS_LAUNCH_PLIST="$HOME/Library/LaunchAgents/$EMACS_LAUNCH_LABEL.plist"
+
+# Start Emacs daemon
+emacs-start() {
+    if launchctl print "gui/$(id -u)/$EMACS_LAUNCH_LABEL" &>/dev/null; then
+        echo "✓ Emacs daemon is already managed by launchd"
+    else
+        launchctl bootstrap "gui/$(id -u)" "$EMACS_LAUNCH_PLIST" &&
+            echo "✓ Emacs daemon started"
+    fi
+}
+
+# Stop Emacs daemon
+emacs-stop() {
+    if launchctl print "gui/$(id -u)/$EMACS_LAUNCH_LABEL" &>/dev/null; then
+        launchctl bootout "gui/$(id -u)/$EMACS_LAUNCH_LABEL" &&
+            echo "✓ Emacs daemon stopped"
+    else
+        echo "Emacs daemon is not loaded"
+    fi
+}
+
+# Check daemon status
+emacs-status() {
+    if emacsclient -e t &>/dev/null; then
+        echo "✓ Emacs daemon is running"
+    else
+        echo "✗ Emacs daemon is not responding"
+    fi
+}
