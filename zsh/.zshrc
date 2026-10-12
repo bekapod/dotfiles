@@ -116,7 +116,7 @@ export GBDK_HOME="$HOME/gbdk"
 export PATH="$PATH:$GBDK_HOME/bin:$HOME/dotfiles/bin"
 
 # uv, claude, and friends
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 
