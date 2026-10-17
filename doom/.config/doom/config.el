@@ -51,6 +51,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Documents/garden/")
+(setq org-roam-directory (expand-file-name "notes/" org-directory))
+(after! org-roam-graph
+  (setq org-roam-graph-viewer "open"))
 (setq org-agenda-files
       (list (expand-file-name "todo.org" org-directory)
             (expand-file-name "projects/" org-directory)))
