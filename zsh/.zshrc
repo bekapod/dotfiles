@@ -167,11 +167,7 @@ export PLANNOTATOR_AI=disabled
 
 export PATH="$HOME/.config/emacs/bin:$PATH"
 e() {
-    if [[ -n "$HERDR_PANE_ID" && -z "$TMUX" && -z "$STY" ]]; then
-        TERM=xterm-emacs command emacsclient -t "$@"
-    else
-        command emacsclient -t "$@"
-    fi
+    command emacsclient -t "$@"
 }
 # >>> oh-my-opencode-slim background subagents >>>
 export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
