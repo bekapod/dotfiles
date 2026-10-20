@@ -123,3 +123,6 @@
   (setq editorconfig-get-properties-function
         #'editorconfig-core-get-properties-hash))
 
+(use-package! copilot
+  :hook ((prog-mode . copilot-mode)
+         (prog-mode . copilot-nes-mode)))
