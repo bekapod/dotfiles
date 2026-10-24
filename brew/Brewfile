@@ -67,7 +67,7 @@ brew "vscode-langservers-extracted"
 # Internet file retriever
 brew "wget"
 brew "yazi"
-brew "anomalyco/tap/opencode", trusted: true
+brew "anomalyco/tap/opencode-v2", trusted: true
 brew "codecrafters-io/tap/codecrafters"
 brew "jesseduffield/lazydocker/lazydocker", trusted: true
 brew "oven-sh/bun/bun", trusted: true
