@@ -63,6 +63,7 @@ brew "tmux"
 brew "tmuxinator"
 # Parser generator tool
 brew "tree-sitter-cli"
+brew "vscode-langservers-extracted"
 # Internet file retriever
 brew "wget"
 brew "yazi"

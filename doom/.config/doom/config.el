@@ -123,6 +123,15 @@
   (setq editorconfig-get-properties-function
         #'editorconfig-core-get-properties-hash))
 
+(after! eglot
+  (add-to-list 'eglot-server-programs
+               '((elixir-mode) "elixir-ls"))
+  ;; Doom uses `web-mode' for both HTML and Phoenix HEEx. Tell Tailwind to
+  ;; parse these buffers as HTML; leave CSS to its dedicated language server.
+  (add-to-list 'eglot-server-programs
+               '(((web-mode :language-id "html"))
+                 "tailwindcss-language-server" "--stdio")))
+
 (use-package! copilot
   :hook ((prog-mode . copilot-mode)
          (prog-mode . copilot-nes-mode)))
