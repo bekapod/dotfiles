@@ -7,7 +7,7 @@ Load the visual-explainer skill and generate a self-contained HTML project recap
 
 ## Quick mode
 
-Only use quick mode when `$@` contains the literal `--quick` flag. Remove the flag before interpreting any recap arguments. Complete the same project research and verification below, then read `./quick/README.md` and `./quick/schema.json` and express the recap as a compact spec. In Pi, call `visual_explainer` with `action: "render_quick"`. In other harnesses, run the local `./quick/render.mjs` fallback. If the recap does not fit the schema, validation fails, or rendering errors, generate complete HTML and use the normal render flow. Without `--quick`, preserve full HTML behavior.
+Only use quick mode when `$@` contains the literal `--quick` flag. Remove the flag before interpreting any recap arguments. Complete the same project research and verification below, then read `./quick/README.md` and `./quick/schema.json` and express the recap as a compact spec. Render it with the local `./quick/render.mjs` script or the `visual-explainer-mcp` quick-render tool. If the recap does not fit the schema, validation fails, or rendering errors, generate complete HTML and use the normal render flow. Without `--quick`, preserve full HTML behavior.
 
 ## Data gathering before HTML
 

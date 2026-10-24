@@ -7,7 +7,7 @@ Load the visual-explainer skill and generate a self-contained HTML plan review.
 
 ## Quick mode
 
-Only use quick mode when `$@` contains the literal `--quick` flag. Remove the flag before resolving the plan input. Complete the same code research and verification below, then read `./quick/README.md` and `./quick/schema.json` and express the review as a compact spec. In Pi, call `visual_explainer` with `action: "render_quick"`. In other harnesses, run the local `./quick/render.mjs` fallback. If the review does not fit the schema, validation fails, or rendering errors, generate complete HTML and use the normal render flow. Without `--quick`, preserve full HTML behavior.
+Only use quick mode when `$@` contains the literal `--quick` flag. Remove the flag before resolving the plan input. Complete the same code research and verification below, then read `./quick/README.md` and `./quick/schema.json` and express the review as a compact spec. Render it with the local `./quick/render.mjs` script or the `visual-explainer-mcp` quick-render tool. If the review does not fit the schema, validation fails, or rendering errors, generate complete HTML and use the normal render flow. Without `--quick`, preserve full HTML behavior.
 
 ## Inputs
 

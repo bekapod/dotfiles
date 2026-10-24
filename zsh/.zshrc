@@ -122,8 +122,6 @@ export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
-alias pi-sandbox="pi -e ~/.pi/gondolin"
-
 if [ -d "$HOME/zsh" ]; then
   for file in ~/zsh/*; do
     source $file

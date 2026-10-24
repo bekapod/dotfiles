@@ -18,14 +18,14 @@ Generate self-contained HTML pages that explain systems, code changes, plans, da
 - If a table would have 4+ rows or 3+ columns, render it as HTML and give only a short chat summary.
 - Write files to `~/.agent/diagrams/` or the explicit eval output path. Use descriptive filenames.
 - Generate a Markdown companion only when the user explicitly asks for AI-readable output or a source brief. Keep HTML as the final visual output; Markdown is a companion, never the source for HTML. Write `<name>.md` beside `<name>.html` when possible, and ask before replacing an existing companion file.
-- Open generated pages in the browser when running normally. In Pi package installs, use `visual_explainer` with `prepare` for planning/context and `render` only after the complete HTML document exists. MCP hosts use `visual-explainer-mcp`, which defaults render tools to `open: false`. Use `viewer: "glimpse"` only when the user wants a native Glimpse window and `glimpseui` is installed; `viewer: "auto"` may fall back to the browser.
-- The final page must be a complete self-contained HTML document, including embedded CSS, a self-contained favicon, and any needed JS. In Pi, `visual_explainer.render` also adds missing `html lang`, missing viewport metadata, and display-math escaping for raw `<` / `>` inside `$$...$$`.
+- Open generated pages in the browser when running normally. MCP hosts can use `visual-explainer-mcp`, which defaults render tools to `open: false`. Use `viewer: "glimpse"` only when the user wants a native Glimpse window and `glimpseui` is installed; `viewer: "auto"` may fall back to the browser.
+- The final page must be a complete self-contained HTML document, including embedded CSS, a self-contained favicon, and any needed JS.
 
 ## Quick mode
 
 Quick mode is opt-in. Use it only when `--quick` appears on `/generate-web-diagram`, `/diff-review`, `/plan-review`, or `/project-recap`. Default and all other prompt behavior remains full HTML generation.
 
-For quick mode, read `./quick/README.md` and `./quick/schema.json`. Gather and verify the same source facts as full mode, but emit the compact JSON spec. In Pi, call the existing `visual_explainer` tool with `action: "render_quick"`, `filename`, `spec`, and optional `open` or `viewer`. In other harnesses, save the JSON and call the local `./quick/render.mjs` script. The renderer validates the spec and creates the complete HTML document.
+For quick mode, read `./quick/README.md` and `./quick/schema.json`. Gather and verify the same source facts as full mode, but emit the compact JSON spec. Use the local `./quick/render.mjs` script or the `visual-explainer-mcp` quick-render tool. The renderer validates the spec and creates the complete HTML document.
 
 Quick mode is not suitable for custom visual composition, slides, Mermaid-rich topology, or content that the schema cannot express. If it is not a fit, schema validation fails, or rendering errors, fall back to the normal full HTML workflow and render action. Do not use quick mode for slides, fact-check, visual plans, PPTX, themes, or updates.
 

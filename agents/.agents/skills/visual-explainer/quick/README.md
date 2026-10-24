@@ -4,33 +4,7 @@ Quick mode moves repeated HTML and CSS out of the agent response. The agent emit
 
 Quick mode is opt-in. Use it only for `/generate-web-diagram --quick`, `/diff-review --quick`, `/plan-review --quick`, or `/project-recap --quick`. Use full mode if the requested design does not fit the schema or if validation or rendering fails.
 
-## Pi
-
-Call the existing `visual_explainer` tool with:
-
-```json
-{
-  "action": "render_quick",
-  "filename": "auth-flow-quick",
-  "spec": {
-    "title": "Authentication flow",
-    "sections": [
-      {
-        "title": "Request path",
-        "flow": {
-          "nodes": [
-            { "id": "browser", "label": "Browser" },
-            { "id": "api", "label": "API", "tone": "positive" }
-          ],
-          "edges": [{ "from": "browser", "to": "api", "label": "token" }]
-        }
-      }
-    ]
-  }
-}
-```
-
-## Other harnesses
+## Render the spec
 
 Save the spec as JSON and run:
 
@@ -38,7 +12,7 @@ Save the spec as JSON and run:
 node ./quick/render.mjs spec.json ~/.agent/diagrams/auth-flow-quick.html
 ```
 
-Use the `quick` directory relative to the installed visual-explainer skill. Open the result with the harness browser command. If the renderer exits with an error, continue with the normal full HTML workflow.
+Use the `quick` directory relative to the installed visual-explainer skill. Alternatively, use the `visual-explainer-mcp` quick-render tool. Open the result with the available browser command. If rendering exits with an error, continue with the normal full HTML workflow.
 
 ## Schema
 
