@@ -131,7 +131,3 @@
   (add-to-list 'eglot-server-programs
                '(((web-mode :language-id "html"))
                  "tailwindcss-language-server" "--stdio")))
-
-(use-package! copilot
-  :hook ((prog-mode . copilot-mode)
-         (prog-mode . copilot-nes-mode)))
