@@ -130,4 +130,18 @@
   ;; parse these buffers as HTML; leave CSS to its dedicated language server.
   (add-to-list 'eglot-server-programs
                '(((web-mode :language-id "html"))
-                 "tailwindcss-language-server" "--stdio")))
+                 "tailwindcss-language-server" "--stdio"))
+  ;; Added last so it lands ahead of the `web-mode' entry above; eglot takes
+  ;; the first entry `vue-mode' derives from.
+  (add-to-list 'eglot-server-programs
+               `((vue-mode :language-id "vue")
+                 . ("typescript-language-server" "--stdio"
+                    :initializationOptions
+                    (:plugins [(:name "@vue/typescript-plugin"
+                                :location ,(expand-file-name "~/.volta/tools/image/packages/@vue/typescript-plugin/lib/node_modules/@vue/typescript-plugin")
+                                :languages ["vue"])])))))
+
+;; Vue: dedicated mode so eglot sends languageId "vue" to tsserver's vue plugin
+(define-derived-mode vue-mode web-mode "Vue")
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+(add-hook 'vue-mode-local-vars-hook #'lsp! 'append)
