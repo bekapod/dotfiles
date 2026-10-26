@@ -69,7 +69,7 @@ brew "codecrafters-io/tap/codecrafters"
 brew "jesseduffield/lazydocker/lazydocker", trusted: true
 brew "oven-sh/bun/bun", trusted: true
 cask "1password-cli"
-cask "bruno"
+cask "bruno", args: { appdir: "~/Applications" }
 cask "claude-code@latest"
 cask "ghostty"
 go "golang.org/x/tools/cmd/goimports"
